@@ -1,0 +1,13 @@
+.inputs {
+    background:#F1F1F1 url('#{resource["default/images:logo.png"]}') no-repeat;
+    background-position:3px 5px!important;
+    width:270px;
+    border:1px solid #CCC;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    -moz-box-shadow:0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow:0 1px 1px #CCC inset, 0 1px 0 #FFF;
+    box-shadow:0 1px 1px #CCC inset, 0 1px 0 #FFF;
+    padding:10px 10px 10px 25px;
+}
