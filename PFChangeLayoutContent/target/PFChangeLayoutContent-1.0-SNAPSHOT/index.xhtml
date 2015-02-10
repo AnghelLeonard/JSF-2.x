@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>PrimeFaces Layout Content</title>        
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="west" size="200">
+                Select Page
+                <hr/>
+                <h:form>
+                    <p:commandButton value="Page A" update=":mainPanelId" action="#{pageBean.changePageAction('/WEB-INF/pages/pageA.xhtml')}"/>
+                </h:form>
+                <h:form>
+                    <p:commandButton value="Page B" update=":mainPanelId" action="#{pageBean.changePageAction('/WEB-INF/pages/pageB.xhtml')}"/>
+                </h:form>                                
+                <hr/>       
+                <p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">                   
+                    <f:facet name="start">
+                        <h:graphicImage library="default" name="images/ajax_loader.gif" />
+                    </f:facet>                                           
+                </p:ajaxStatus>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">                
+                <h:panelGroup id="mainPanelId" layout="block">
+                    <ui:include src="#{pageBean.page}" />
+                </h:panelGroup>               
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
