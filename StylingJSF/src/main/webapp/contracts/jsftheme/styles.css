@@ -10,7 +10,7 @@
     border:1px solid #069;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
-    border-radius:3px;
+    border-radius:3px;    
 }
 
 .content div {
@@ -38,13 +38,14 @@
     display:inline-block;
     color:#777777;
     font-family:arial;
-    font-size:15px;
+    font-size:12px;
     font-weight:bold;
     font-style:normal;	
-    line-height:50px;	
+    line-height:25px;	
     text-decoration:none;
-    text-align:left;
-    text-shadow:1px 1px 0px #ffffff;
+    text-align:center;     
+    padding-left: auto;
+    padding-right: auto;
 }
 
 .content input[type=text] { /* <h:inputText> */
@@ -194,7 +195,9 @@
     background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
     background-color:#e9e9e9;
-}.content input:active {
+}
+
+.content input:active {
     position:relative;
     top:1px;
 }
@@ -325,7 +328,10 @@
 }
 
 .content table td,.content table th {
-    padding:3px 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: auto;
+    padding-right: auto;
 }
 
 .content table thead th {
