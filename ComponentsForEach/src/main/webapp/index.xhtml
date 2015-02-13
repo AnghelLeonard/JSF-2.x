@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:o="http://omnifaces.org/ui">
+    <h:head>
+        <title></title>         
+    </h:head>
+    <h:body> 
+        <h:panelGroup id="myDivId" layout="block">
+            <h:outputText value="New ATP Player"/>
+        </h:panelGroup>
+
+        <!-- the role of binding is to have some quick examples -->
+        <h:form id="myFormId" binding="#{playerBean.uiForm}">
+            <h:panelGrid id="panelId" columns="2">
+                <o:outputLabel id="nameLabelId" for="nameId" value="Name"/>
+                <h:inputText id="nameId" value="#{playerBean.name}"/>          
+                <o:outputLabel id="surnameLabelId" for="surnameId" value="Surname"/>
+                <h:inputText id="surnameId" value="#{playerBean.surname}"/> 
+                <o:outputLabel id="ageLabelId" for="surnameId" value="Age"/>
+                <h:inputText id="ageId" value="#{playerBean.age}"/>               
+                <o:outputLabel id="titleLabelId" for="titleId" value="Title" rendered="false"/>
+                <h:inputText id="titleId" value="#{playerBean.title}" rendered="false"/>        
+
+                <!-- 1 - suppress page rendering; visit from root -->
+                <!-- 2 - suppress surnameLabelId, surnameId ,ageLabelId, ageId rendering; visit from form, myFormId-->
+                <!-- 3 - display IDs only of rendered components (will skip titleLabelId and titleId); visit from form, myFormId, with VisitHint.SKIP_UNRENDERED -->
+                <!-- 4 - suppress the rendering of all components of type UIInput and HtmlOutputLabel; visit from form, myFormId, with VisitHint.SKIP_UNRENDERED -->
+                <h:commandButton id="btnId" value="Save" action="#{playerBean.someAction(1)}"/>  
+            </h:panelGrid>
+        </h:form>                
+    </h:body>
+</html>
+
