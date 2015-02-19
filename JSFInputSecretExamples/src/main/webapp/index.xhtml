@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>JSF inputSecret examples</title>
+        <style type="text/css">
+            .password{
+                color: red;  
+                background-color: black;
+            }
+        </style>    
+    </h:head>
+    <h:body>                
+
+        <!-- Basic/common usage -->    
+        <strong>Example 1:</strong> Basic/common usage <hr/>
+        <h:form>
+            Password: <h:inputSecret value="#{playerBean.password}" />
+            <h:commandButton value="Send" action="data" />
+        </h:form>
+        <hr/><br/>              
+
+        <!-- Simple tooltip usage -->    
+        <strong>Example 2:</strong> Simple tooltip usage <hr/>
+        <h:form>
+            Password: <h:inputSecret value="#{playerBean.password}" title="Enter password here"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>  
+
+        <!-- Simple inline style -->            
+        <strong>Example 3:</strong> Simple inline style <hr/>
+        <h:form>
+            Password: <h:inputSecret value="#{playerBean.password}" style="color: red; background-color: black;"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Simple CSS style -->            
+        <strong>Example 4:</strong> Simple CSS style <hr/>
+        <h:form>
+            Password : <h:inputSecret value="#{playerBean.password}" styleClass="password" />
+            <h:commandButton value="Send" action="data" />
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make a required password text box via JSF (see below via HTML 5) -->  
+        <strong>Example 5:</strong> Make a required password text box via JSF (see below via HTML 5)<hr/>
+        <h:form>
+            Password : <h:inputSecret value="#{playerBean.password}" required="true" requiredMessage="Please, provide a password!"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make a required password text box via HTML 5, required="true" -->
+        <!-- for any case add JSF attribute required="true" also -->
+        <strong>Example 6:</strong> Make a required password text box via HTML 5, required="true"<hr/>
+        <h:form>
+            Password : <h:inputSecret value="#{playerBean.password}" pt:required="true" required="true" requiredMessage="Please, provide a password!"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make an password text box with placeholder via HTML 5, placeholder="some_placeholder" -->    
+        <strong>Example 7:</strong> Make an password text box with placeholder via HTML 5, placeholder="some_placeholder" <hr/>
+        <h:form>
+            Password: <h:inputSecret value="#{playerBean.password}" pt:placeholder = "Type a password"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make an password text box with autofocus via HTML 5, autofocus="true" -->    
+        <strong>Example 8:</strong> Make an password text box with autofocus via HTML 5, autofocus="true" <hr/>
+        <h:form>
+            Password: <h:inputSecret value="#{playerBean.password}" pt:autofocus = "true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make a password pattern text box via HTML 5, pattern="some_pattern" (e.g. minim 6 characters long) -->
+        <strong>Example 9:</strong> Make a password pattern text box via HTML 5, pattern="some_pattern" (e.g. minim 6 characters long)<hr/>
+        <h:form>
+            Password: <h:inputSecret value="#{playerBean.password}" pt:pattern=".{6,}" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>      
+    </h:body>
+</html>
+
