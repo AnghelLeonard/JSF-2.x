@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title></title>     
+        <style type="text/css">
+            .input{
+                background-color: darkorange; 
+                color: brown;
+                width: 250px; 
+                height: 25px;
+            }
+        </style>
+    </h:head>
+    <h:body> 
+        <!-- Basic/common usage -->    
+        <strong>Example 1:</strong> Basic/common usage <hr/>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>              
+        
+        <!-- Simple tooltip usage -->    
+        <strong>Example 2:</strong> Simple tooltip usage <hr/>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}" title="Enter player name here"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>  
+
+        <!-- Simple inline style -->            
+        <strong>Example 3:</strong> Simple inline style <hr/>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}" style="background-color: darkorange; color: brown; width: 250px; height: 25px;"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Simple CSS style -->            
+        <strong>Example 4:</strong> Simple CSS style <hr/>
+        <h:form>
+            Name:: <h:inputText value="#{playerBean.name}" styleClass="input" />
+            <h:commandButton value="Send" action="data" />
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make a required text box via JSF (see below via HTML 5) -->  
+        <strong>Example 5:</strong> Make a required text box via JSF (see below via HTML 5)<hr/>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a required text box via HTML 5, required="true" -->
+        <!-- for any case add JSF attribute required="true" also -->
+        <strong>Example 6:</strong> Make a required text box via HTML 5, required="true"<hr/>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}" required="true" pt:required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make an text box with placeholder via HTML 5, placeholder="some_placeholder" -->    
+        <strong>Example 7:</strong> Make an text box with placeholder via HTML 5, placeholder="some_placeholder" <hr/>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}" pt:placeholder = "Type player name"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make an text box with autofocus via HTML 5, autofocus="true" -->    
+        <strong>Example 8:</strong> Make an text box with autofocus via HTML 5, autofocus="true" <hr/>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}" pt:autofocus = "true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make an e-mail text box via HTML 5, type="email" -->
+        <strong>Example 9:</strong> Make an e-mail text box via HTML 5, type="email"<hr/>
+        <h:form>
+            E-mail: <h:inputText value="#{playerBean.email}"  pt:type="email" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make an URL text box via HTML 5, type="url" -->
+        <strong>Example 10:</strong> Make an URL text box via HTML 5, type="url"<hr/>
+        <h:form>
+            Website URL: <h:inputText value="#{playerBean.weburl}"  pt:type="url" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make an color chooser text box via HTML 5, type="color" -->
+        <strong>Example 11:</strong> Make an color chooser text box via HTML 5, type="color"<hr/>
+        <h:form>
+            Favorite color: <h:inputText value="#{playerBean.color}"  pt:type="color" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a date text box via HTML 5, type="date", min="min_date", max="max_date" -->
+        <strong>Example 12:</strong> Make a date text box via HTML 5, type="date", min="min_date", max="max_date"<hr/>
+        <h:form>
+            Birthday: <h:inputText value="#{playerBean.date}"  pt:type="date" pt:min="2015-01-01" pt:max="2025-12-30" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a date/time local text box via HTML 5, type="datetime-local" -->
+        <strong>Example 13:</strong> Make a date/time local text box via HTML 5, type="datetime-local"<hr/>
+        <h:form>
+            Birth time: <h:inputText value="#{playerBean.localtime}"  pt:type="datetime-local" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a month selector text box via HTML 5, type="month" -->
+        <strong>Example 14:</strong> Make a month selector text box via HTML 5, type="month"<hr/>
+        <h:form>
+            Birth month: <h:inputText value="#{playerBean.month}"  pt:type="month" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a week selector text box via HTML 5, type="week" -->
+        <strong>Example 15:</strong> Make a week selector text box via HTML 5, type="week"<hr/>
+        <h:form>
+            Birth week: <h:inputText value="#{playerBean.week}"  pt:type="week" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a number text box via HTML 5, type="number", min="some_min", max="some_max" (moreover: step="some_step") -->
+        <strong>Example 16:</strong> Make a number text box via HTML 5, type="number", min="some_min", max="some_max"  (moreover: step="some_step")<hr/>
+        <h:form>
+            Age: <h:inputText value="#{playerBean.age}"  pt:type="number" pt:min="18" pt:max="150" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+         <!-- Make a range text box via HTML 5, type="range", min="some_min", max="some_max" -->
+        <strong>Example 17:</strong> Make a range text box via HTML 5, type="range", min="some_min", max="some_max"<hr/>
+        <h:form>
+            Tournaments: <h:inputText value="#{playerBean.tournaments}"  pt:type="range" pt:min="0" pt:max="1500" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make a pattern text box via HTML 5, pattern="some_pattern" (e.g. three letter country code) -->
+        <strong>Example 18:</strong> Make a pattern text box via HTML 5, pattern="some_pattern" (e.g. three letter country code)<hr/>
+        <h:form>
+            Country code: <h:inputText value="#{playerBean.countrycode}" pt:pattern="[A-Za-z]{3}" pt:required="true" required="true"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make a text box with hints via HTML 5, list="some_list" -->
+        <strong>Example 19:</strong> Make a text box with hints via HTML 5, list="some_list"<hr/>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}" pt:list="players" pt:required="true" required="true"/>
+            <datalist id="players">
+            <option value="Rafael Nadal"/>
+            <option value="Roger Federer"/>
+            <option value="David Ferrer"/>
+            <option value="Novak Djokovic"/>
+            <option value="Andy Murray"/>
+        </datalist>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>        
+        <br/>
+    </h:body>
+</html>
+
