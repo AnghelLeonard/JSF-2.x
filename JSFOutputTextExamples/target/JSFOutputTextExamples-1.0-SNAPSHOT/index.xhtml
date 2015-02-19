@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>JSF outputText examples</title>  
+        <style type="text/css">
+            .ot {
+                color: red;
+            }
+        </style>
+    </h:head>
+    <h:body>     
+        <!-- Basic/common usages 1 -->    
+        <strong>Example 1:</strong> Basic/common usage (does not produce extra HTML markup)<hr/>        
+        <h:outputText value="#{playerBean.name}"/>
+        <!-- in this case, you can simply use #{playerBean.name} -->
+        <hr/><br/> 
+        
+        <!-- Basic/common usages 2 -->    
+        <strong>Example 2:</strong> Basic/common usage (the presence of 'id' produce &lt;span&gt; markup)<hr/>        
+        <h:outputText id="nameId" value="#{playerBean.name}"/>
+        <!-- this will render <span id="nameId">Rafael Nadal</span> -->
+        <hr/><br/> 
+                  
+        <!-- Styling text with inline CSS -->    
+        <strong>Example 3:</strong> Styling text with inline CSS (the presence of 'style' produce &lt;span&gt; markup)<hr/>        
+        <h:outputText value="#{playerBean.name}" style="color: red;"/>  
+        <!-- this will render <span style="color: red;">Rafael Nadal</span> -->
+        <hr/><br/>
+        
+        <!-- Styling text with 'styleClass'-->    
+        <strong>Example 4:</strong> Styling text with 'styleClass' (the presence of 'styleClass' produce &lt;span&gt; markup)<hr/>        
+        <h:outputText value="#{playerBean.name}" styleClass="ot"/>  
+        <!-- this will render <span class="ot">Rafael Nadal</span> -->
+        <hr/><br/> 
+        
+        <!-- Styling text with 'style'-->    
+        <strong>Example 5:</strong> Styling text with 'style' (the presence of 'style' produce &lt;span&gt; markup)<hr/>        
+        <h:outputText value="#{playerBean.name}" style="color:green;"/>  
+        <!-- this will render <span style="color:green;">Rafael Nadal</span> -->
+        <hr/><br/> 
+        
+        <!-- Indicate text direction 'dir'-->    
+        <strong>Example 6:</strong> Indicate text direction 'dir' (the presence of 'dir' produce &lt;span&gt; markup)<hr/>        
+        <h:outputText lang="LTR" value="#{playerBean.name}"/>  
+        <!-- this will render <span dir="RTL">Rafael Nadal</span> -->
+        <hr/><br/>
+        
+        <!-- Escape HTML -->    
+        <strong>Example 7:</strong> Escape HTML<hr/>        
+        <h:outputText escape="true" value="#{playerBean.coolname}"/>   
+        <!-- this will render &lt;font face="verdana" color="green"&gt;Rafael Nadal&lt;/font&gt; -->
+        <hr/><br/>
+        
+        <!-- No escape HTML -->    
+        <strong>Example 8:</strong> No escape HTML<hr/>        
+        <h:outputText escape="false" value="#{playerBean.coolname}"/>  
+        <!-- this will render <font face="verdana" color="green">Rafael Nadal</font> -->
+        <hr/><br/>
+    </h:body>
+</html>
