@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" 
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>JSF link examples</title>
+        <style type="text/css">
+            .linkcss{
+                color: red;  
+                background-color: black;
+            }
+        </style>    
+    </h:head>
+    <h:body>                
+
+        <!-- Basic/common usage -->    
+        <strong>Example 1:</strong> Basic/common usage <hr/>
+        <h:link value="Welcome page" outcome="welcome" />
+        <hr/><br/>              
+        
+        <!-- Outcome from bean (evaluated at rendering) -->    
+        <strong>Example 2:</strong> Outcome from bean (evaluated at rendering) <hr/>
+        <h:link value="Welcome page" outcome="#{welcomeBean.page}" />
+        <hr/><br/> 
+
+        <!-- Using 'id' attribute to render <a id="the_id" name="the_id" ... > -->    
+        <strong>Example 3:</strong> Using 'id' attribute to render &lt;a id="the_id" name="the_id" ... &gt; <hr/>
+        <h:link id="welcomeId" value="Welcome page (anchor)" outcome="welcome" />
+        <!-- this can be used as a HTML anchor -->
+        <hr/><br/>
+
+        <!-- Add a query string without <f:param> -->    
+        <strong>Example 4:</strong> Add a query string without &lt;f:param&gt; <hr/>
+        <h:link value="Welcome page" outcome="welcome?name=Rafael" />
+        <hr/><br/>              
+
+        <!-- Add a query string with <f:param> -->    
+        <strong>Example 5:</strong> Add a query string with &lt;f:param&gt; <hr/>
+        <h:link value="Welcome page" outcome="welcome">
+            <f:param name="name" value="Roger"/>
+        </h:link>
+        <hr/><br/>              
+
+        <!-- Use a CSS class to style link -->    
+        <strong>Example 6:</strong> Use a CSS class to style link <hr/>
+        <h:link value="Welcome page" outcome="welcome" styleClass="linkcss" />
+        <hr/><br/>
+
+        <!-- Use inline CSS to style link -->    
+        <strong>Example 7:</strong> Use inline CSS to style link <hr/>
+        <h:link value="Welcome page" outcome="welcome" style="color: red; background-color: black;" />
+        <hr/><br/>             
+
+        <!-- Use image link -->    
+        <strong>Example 8:</strong> Use image link <hr/>
+        <h:link outcome="welcome" >
+            <h:graphicImage library="default" name="images/welcome.gif" />
+        </h:link>
+        <hr/><br/>
+        
+        <!-- Use HTML anchor link -->    
+        <strong>Example 9:</strong>  Use HTML anchor link <hr/>
+        <h:link value="Welcome Anchor" fragment="welcomeId"/>
+        <hr/><br/>
+
+        <!-- Use HTML 5 'download' attribute to download link -->    
+        <strong>Example 10:</strong> Use HTML 5 'download' attribute to download link <hr/>
+        <h:link outcome="welcome" pt:download="welcomePage">
+            <h:graphicImage library="default" name="images/download.png" />
+        </h:link>
+        <!-- this will download the content of welcome.xhtml page as, welcomePage.xhtml -->
+        <hr/><br/>       
+
+    </h:body>
+</html>
+
