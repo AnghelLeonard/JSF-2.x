@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>JSF inputTextarea examples</title>     
+        <style type="text/css">
+            .textarea{
+                background-color: graytext; 
+                color: greenyellow;      
+                font-family: Papyrus, fantasy;
+                font-size: 16px;
+                font-style: normal;
+                font-variant: normal;                            
+            }
+        </style>
+    </h:head>
+    <h:body> 
+        <!-- Basic/common usage -->    
+        <strong>Example 1:</strong> Basic/common usage <hr/>
+        <h:form>           
+            Text: <h:inputTextarea cols="30" rows="5" value="#{playerBean.text}" />            
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>              
+
+        <!-- Style textarea with CSS class -->    
+        <strong>Example 2:</strong> Style textarea with CSS class <hr/>
+        <h:form>           
+            Text: <h:inputTextarea cols="30" rows="5" value="#{playerBean.text}" styleClass="textarea" />            
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Style textarea with inline CSS -->    
+        <strong>Example 3:</strong> Style textarea with inline CSS <hr/>
+        <h:form>           
+            Text: <h:inputTextarea cols="30" rows="5" value="#{playerBean.text}" style=" background-color: graytext; color: greenyellow;" />            
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a required textarea via JSF (see below via HTML 5) -->  
+        <strong>Example 4:</strong> Make a required textarea via JSF (see below via HTML 5)<hr/>        
+        <h:form>           
+            Text: <h:inputTextarea cols="30" rows="5" value="#{playerBean.text}" required="true" requiredMessage="Please, enter some text!"/>            
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Make a required textarea via HTML 5, 'required' attribute -->
+        <!-- for any case add JSF attribute required="true" also -->
+        <strong>Example 5:</strong> Make a required textarea via HTML 5, 'required' attribute<hr/>
+        <h:form>           
+            Text: <h:inputTextarea cols="30" rows="5" value="#{playerBean.text}" pt:required="true" required="true" requiredMessage="Please, enter some text!"/>            
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a textarea with autofocus via HTML 5, 'autofocus' attribute -->    
+        <strong>Example 6:</strong> Make a textarea with autofocus via HTML 5, 'autofocus' attribute <hr/>
+        <h:form>           
+            Text: <h:inputTextarea cols="30" rows="5" value="#{playerBean.text}" pt:autofocus="true"/>            
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a textarea with max length via HTML 5, 'maxlength' attribute (e.g. 10 characters)-->    
+        <strong>Example 7:</strong> Make a textarea with max length via HTML 5, 'maxlength' attribute (e.g. 10 characters) <hr/>
+        <h:form>           
+            Text: <h:inputTextarea cols="30" rows="5" value="#{playerBean.text}" pt:maxlength="10"/>            
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a textarea with placeholder via HTML 5 'placeholder' attribute -->    
+        <strong>Example 8:</strong> Make a textarea with placeholder via HTML 5 'placeholder' attribute <hr/>
+        <h:form>           
+            Text: <h:inputTextarea cols="30" rows="5" value="#{playerBean.text}" pt:placeholder="Type some text here"/>            
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Make a textarea with wrapped text via HTML 5 'wrap' attribute -->    
+        <strong>Example 9:</strong> Make a textarea with wrapped text via HTML 5 'wrap' attribute <hr/>
+        <h:form>           
+            Text: <h:inputTextarea cols="30" rows="5" value="#{playerBean.text}" pt:wrap="hard"/>            
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <!-- you can switch to pt:wrap="soft" and check the POST request via Firebug to see the 'wrap' effect -->
+        <hr/><br/>
+               
+    </h:body>
+</html>
+
