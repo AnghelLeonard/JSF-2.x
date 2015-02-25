@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"       
+      xmlns:h="http://xmlns.jcp.org/jsf/html"        
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>JSF valueChangeListener examples</title>             
+    </h:head>
+    <h:body> 
+
+        <!-- use the 'valueChangeListener' attribute to point a bean’s method directly when a radio is selected -->
+        Each time you select a radio, the playerChangeValueMethod(ValueChangeEvent e) is invoked
+        <h:form>
+            <h:selectOneRadio value="#{playerBean.player}" onchange="submit()" valueChangeListener="#{playerBean.playerChangeValueMethod}">
+                <f:selectItems value="#{playerBean.players}" />
+            </h:selectOneRadio>            
+        </h:form>
+        <hr/>
+
+        <!-- use the 'valueChangeListener' attribute to point a bean’s method directly when a boolean checkbox is clicked -->
+        Each time you click on this checkbox, the playerChangeValueMethod(ValueChangeEvent e) is invoked<br/>
+        Check/Un-check:
+        <h:form>           
+            <h:selectBooleanCheckbox value="#{playerBean.player}" onclick="submit()" valueChangeListener="#{playerBean.playerChangeValueMethod}"/>                          
+        </h:form>
+        <hr/>
+
+        <!-- use the 'valueChangeListener' attribute to point a bean’s method directly when an item is selected -->
+        Each time you select an item, the playerChangeValueMethod(ValueChangeEvent e) is invoked        
+        <h:form>
+            <h:selectOneMenu value="#{playerBean.player}" onchange="submit()" valueChangeListener="#{playerBean.playerChangeValueMethod}">
+                <f:selectItems value="#{playerBean.players}" />
+            </h:selectOneMenu>            
+        </h:form>
+        <hr/>
+
+        <!-- use the 'valueChangeListener' attribute to point a bean’s method directly at every key press -->
+        Each time you type a character in the text box, the playerChangeValueMethod(ValueChangeEvent e) is invoked        
+        <h:form>
+            <h:inputText value="#{playerBean.player}" onkeyup="submit()" valueChangeListener="#{playerBean.playerChangeValueMethod}"/>            
+        </h:form>
+        <hr/>                   
+
+        <!-- use the 'ValueChangeListener' interface instead of 'valueChangeListener' attribute -->
+        Each time you select an item, the processValueChange(ValueChangeEvent e) is invoked        
+        <h:form>
+            <h:selectOneMenu value="#{playerBean.player}" onchange="submit()">
+                <f:valueChangeListener type="beans.PlayerChangeValueListener" />
+                <f:selectItems value="#{playerBean.players}" />
+            </h:selectOneMenu>            
+        </h:form>
+        <hr/>
+
+        <!-- use <f:ajax> instead of 'valueChangeListener' attribute (or 'ValueChangeListener' interface) -->
+        Use &lt;f:ajax&gt; instead of 'valueChangeListener' attribute (or 'ValueChangeListener' interface):
+        <h:form>
+            <h:selectOneMenu id="myPlayersId" value="#{playerBean.player}">                
+                <f:selectItems value="#{playerBean.players}" />
+                <f:ajax execute="@form"  render=":selectedPlayerId" listener="#{playerBean.playerChangeValueMethod}" />
+            </h:selectOneMenu>            
+        </h:form>
+        <hr/>       
+        
+        <!-- use <f:ajax> instead of 'valueChangeListener' attribute (or 'ValueChangeListener' interface) -->
+        Each time you type a character in the text box, the playerChangeValueMethod(AjaxBehaviorEvent e) is invoked        
+        <h:form>
+            <h:inputText value="#{playerBean.player}">            
+                <f:ajax event="keyup" execute="@form" render=":selectedPlayerId" listener="#{playerBean.playerChangeValueMethod}" />
+            </h:inputText>
+        </h:form>
+        <hr/> 
+        
+        Selected player: <h:outputText id="selectedPlayerId" value="#{playerBean.player}" style="font-size: 20px; color: red;" />
+    </h:body>
+</html>
+
