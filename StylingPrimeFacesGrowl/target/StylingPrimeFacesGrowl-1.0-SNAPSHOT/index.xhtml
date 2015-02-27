@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>                
+        </title>              
+    </h:head>
+    <h:body>             
+        <h:form>
+            <p:growl id="growlId" showDetail="true" sticky="true" /> 
+
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    Login to Rafael Nadal Website
+                </f:facet>
+                <h:outputLabel for="emailId" value="E-mail: " />
+                <p:inputText id="emailId" required="true" value="#{loginBean.email}" requiredMessage="Please, provide an e-mail address" />
+                <h:outputLabel for="passwordId" value="Password: " />
+                <p:inputText id="passwordId" required="true" value="#{loginBean.password}" requiredMessage="Please, provide a password address" />                
+            </p:panelGrid>
+            <p:commandButton value="Login" action="#{loginBean.loginAction()}" update="growlId" />
+        </h:form>     
+        
+        <h:outputStylesheet library="default" name="css/growlcss.css"/>
+    </h:body>
+</html>
+

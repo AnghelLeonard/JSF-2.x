@@ -1,0 +1,99 @@
+/* Growl main div - control over: position, width, top, right, etc*/
+.ui-growl {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    width: 384px;                        
+}
+
+/* Growl container - control over: opacity, margin, etc */
+.ui-growl-item-container {
+    position: relative;        
+    opacity: 0.9;    
+}
+
+/* Growl control over: border, background gradient/image, color, etc */
+.ui-state-highlight{                
+    border: 3px solid #000000;    
+    border-radius: 20px;   
+    background-image: url('#{resource["default:images/rafabg.png"]}'); 
+    /* or, you can use a color
+    background-color: #3B5998; 
+    */
+    /* or, you can use a gradient
+    background: -moz-linear-gradient(center top , rgba(120, 20, 330, 1), rgba(10, 255, 5, 0.5)) repeat scroll 0 0 #00cc00;
+    */
+}
+
+/* Growl control over container shadow */
+.ui-shadow {
+    box-shadow: 0 10px 17px rgba(0, 0, 0, 0.5);
+}
+
+/* Growl div that contains the close icon, image for message type and message (summary and detail) */
+.ui-growl-item {
+    display: block;
+    padding: 1px 4px;
+}
+
+/* Define image properties (error, fatal, warning and info images) */
+.ui-growl-image {  
+    height: 30px;    
+    width: 30px;
+}
+
+/* Define an image for each type (error, fatal, info and warning) */
+.ui-growl-image-error{
+    background: url('#{resource["default:images/error.png"]}');
+}
+
+.ui-growl-image-fatal{
+    background: url('#{resource["default:images/fatal.png"]}');
+}
+
+.ui-growl-image-info{
+    background: url('#{resource["default:images/info.png"]}');
+}
+
+.ui-growl-image-warn{
+    background: url('#{resource["default:images/warn.png"]}');
+}
+
+/* Customize the icon close position */
+.ui-growl-icon-close {            
+    position: absolute;
+    right: 6px;
+    top: 170px;    
+}
+
+/* Growl div that contains the message (summary and detail)*/
+.ui-growl-message{
+    width:340px;    
+}
+
+/* Growl title - this is the message summary*/
+.ui-growl-title {
+    color:#ffffff;
+    text-shadow: 3px 1px 1px #cc0000;
+    display: block;
+    font-family: Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.3999996185303px;
+    padding: 2px 0px 5px;      
+}
+
+/* Growl message - this is the message detail*/
+.ui-growl-message p {
+    color:#ffffff;
+    text-shadow: 3px 1px 1px #cc0000;
+    font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 15.3999996185303px;
+    padding-top:140px;
+}
