@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>JSF inputHidden examples</title>
+        <script type="text/javascript">
+            function getHiddenAge() {
+                alert("The hidden age is: " + document.getElementById("formId1:playerAgeId1").value);
+            }
+
+            function setHiddenAge() {
+                var playername = document.getElementById("formId2:playerNameId2").value;
+                if (playername === "David Ferrer") {
+                    document.getElementById("formId2:playerAgeId2").value = "32";
+                } else if (playername === "Andy Murray") {
+                    document.getElementById("formId2:playerAgeId2").value = "27";
+                } else {
+                    document.getElementById("formId2:playerAgeId2").value = "28";
+                }
+            }
+        </script>
+    </h:head>
+    <h:body> 
+        
+        <!-- Basic/common usage (I) -->    
+        <strong>Example 1:</strong> Basic/common usage (I) <hr/>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>
+            <h:inputHidden value="#{playerBean.age}"/>
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>                       
+
+        <!-- Get in JavaScript the value of a JSF hidden value -->    
+        <strong>Example 2:</strong> Get in JavaScript the value of a JSF hidden value <hr/>
+        <h:form id="formId1">
+            Name: <h:inputText id="playerNameId1" value="#{playerBean.name}"/>
+            <h:inputHidden id="playerAgeId1" value="#{playerBean.age}"/>
+            <h:commandButton value="Send" action="data" onclick="getHiddenAge();"/>
+        </h:form>
+        <hr/><br/>  
+
+        <!-- Pass to a bean a new hidden value using a JSF hidden field and a snippet of JavaScript -->    
+        <strong>Example 3:</strong> Pass to a bean a new hidden value using a JSF hidden field and a snippet of JavaScript <hr/>
+        <h:form id="formId2">
+            Name: <h:inputText id="playerNameId2" value="#{playerBean.name}"/>
+            <h:inputHidden id="playerAgeId2" value="#{playerBean.age}"/>
+            <h:commandButton value="Send" action="data" onclick="setHiddenAge();"/>
+        </h:form>
+        <hr/><br/>  
+
+        <!-- Basic/common usage (II) - dummy usage -->    
+        <strong>Example 4:</strong> Basic/common usage (II) - dummy usage <hr/>
+        <h:form id="formId3">
+            Name: <h:inputText value="#{playerBean.name}"/>
+            <h:inputHidden id="playerage3" value="28"/>
+            <h:commandButton value="Send" action="#{playerBean.save1()}"/>
+        </h:form>
+        <hr/><br/>   
+
+        <!-- Pass to a bean a new hidden value using the HTML markup instead of JSF hidden field -->    
+        <strong>Example 5:</strong> Pass to a bean a new hidden value using the HTML markup instead of JSF hidden field <hr/>
+        <h:form id="formId4">
+            Name: <h:inputText value="#{playerBean.name}"/>
+            <input type="hidden" id="playerage4" name="playerage4" value="28" />
+            <h:commandButton value="Send" action="#{playerBean.save2()}"/>
+        </h:form>
+        <hr/><br/>  
+    </h:body>
+</html>
+
