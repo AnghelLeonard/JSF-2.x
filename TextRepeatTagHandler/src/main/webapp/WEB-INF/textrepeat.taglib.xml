@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib 
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+    version="2.0">
+    <namespace>http://jsf.taghandlers/textrepeat</namespace>    
+    <tag>
+        <tag-name>textrepeat</tag-name>
+        <handler-class>jsf.taghandlers.TextRepeatTagHandler</handler-class>
+        
+        <attribute>
+            <description>
+            <![CDATA[
+            The text that will be repeated
+            ]]>
+            </description>
+            <name>text</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+    
+        <attribute>
+            <description>
+            <![CDATA[
+            The number of times to repeat the text
+            ]]>
+            </description>
+            <name>repeat</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+    
+        <attribute>
+            <description>
+            <![CDATA[
+            The number of times to repeat the text (accepted value: yes)
+            ]]>
+            </description>
+            <name>uppercase</name>
+            <required>false</required>        
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
+</facelet-taglib>
