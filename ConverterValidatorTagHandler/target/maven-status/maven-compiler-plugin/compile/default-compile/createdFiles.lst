@@ -1,0 +1,4 @@
+jsf\taghandlers\ConverterValidatorTagHandler.class
+jsf\taghandlers\MyConverter.class
+jsf\taghandlers\MyValidator.class
+jsf\taghandlers\PlayerBean.class
