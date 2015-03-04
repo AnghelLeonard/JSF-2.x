@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:o="http://omnifaces.org/ui">
+    <h:head>
+        <title>                
+        </title>              
+    </h:head>
+    <h:body>             
+        <ui:composition> 
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="emailId" value="#{emaillabel}"/>
+                    <h:inputText id="emailId" value="#{emailfield}"/>
+                    <h:outputLabel for="passId" value="#{passlabel}"/>
+                    <h:inputSecret id="passId" value="#{passfield}"/>
+                    <o:methodParam name="method" value="#{action}" />
+                    <h:commandButton value="#{btnlabel}" action="#{method}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+
