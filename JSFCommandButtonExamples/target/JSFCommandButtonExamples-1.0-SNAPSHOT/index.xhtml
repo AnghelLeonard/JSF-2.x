@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>JSF commandButton examples</title>   
+        <style type="text/css">
+            .buttoncss{
+                background-color: green;
+                color:yellow;
+            }
+        </style>
+        <script type="text/javascript">
+            function clickJSFButton() {
+                document.getElementById("myFormId:nameHiddenId").value = "Rafael Nadal";
+                document.getElementById("myFormId:emailHiddenId").value = "rafa@rg.com";
+                if (confirm('Are you sure you want to submit the JSF form ?')) {
+                    document.getElementById("myFormId:btnId").click();
+                }
+            }
+        </script>
+        <f:metadata>
+            <f:viewParam name="ccp" value="#{playerBean.countrycode}"/>
+            <f:viewParam name="wup" value="#{playerBean.weburl}"/>
+        </f:metadata>
+    </h:head>
+    <h:body> 
+
+        <!-- Basic/common usage (I) --> 
+        <!-- Submit form, but don't invoke a method bean and navigate back to this page -->
+        <strong>Example 1:</strong> Basic/common usage (I) - Submit form, but don't invoke a method bean and navigate back to this page <hr/>
+        <span>Name: #{playerBean.name} | E-mail: #{playerBean.email}</span>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send"/>
+        </h:form>
+        <hr/><br/>       
+
+        <!-- Basic/common usage (II) --> 
+        <!-- Submit form, invoke a method bean and navigate to this page -->
+        <strong>Example 2:</strong> Basic/common usage (II) - Submit form, invoke a method bean and navigate to this page <hr/>        
+        <span>Name: #{playerBean.name} | E-mail: #{playerBean.email}</span>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="#{playerBean.save()}"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Basic/common usage (III) --> 
+        <!-- Submit form, but don't invoke a method bean and navigate to 'data.xhtml' page -->
+        <strong>Example 3:</strong> Basic/common usage (III) - Submit form, but don't invoke a method bean and navigate to 'data.xhtml' page <hr/>        
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Submit form, but don't invoke a method bean and navigate to 'data.xhtml' page with redirect (POST-GET-REDIRECT) -->
+        <strong>Example 4:</strong> Submit form, but don't invoke a method bean and navigate to 'data.xhtml' page with redirect (POST-GET-REDIRECT) <hr/>        
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="data?faces-redirect=true"/>
+        </h:form>
+        <hr/><br/>               
+
+        <!-- Submit form, invoke a method bean and navigate to 'data.xhtml' page from method -->
+        <strong>Example 5:</strong> Submit form, invoke a method bean and navigate to 'data.xhtml' page from method <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="#{playerBean.saveAndGo()}"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Use 'style' attribute to add custom styles to a button -->
+        <strong>Example 6:</strong> Use 'style' attribute to add custom styles to a button <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="data" style="background-color: green; color:yellow;"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Use 'styleClass' attribute to add custom styles to a button -->
+        <strong>Example 7:</strong> Use 'styleClass' attribute to add custom styles to a button <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="data" styleClass="buttoncss"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Disabled button -->
+        <strong>Example 8:</strong> Disabled button <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="data" disabled="true"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Use of 'actionListener' -->
+        <strong>Example 9:</strong> Use of 'actionListener' <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" actionListener="#{playerBean.save}"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Use of 'actionListener' and 'action' (I) -->
+        <strong>Example 10:</strong> Use of 'actionListener' and 'action' (I) <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" actionListener="#{playerBean.save}" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Use of 'actionListener' and 'action' (II) -->
+        <strong>Example 11:</strong> Use of 'actionListener' and 'action' (II) <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" actionListener="#{playerBean.save}" action="#{playerBean.save()}"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Use of 'f:actionListener' -->
+        <strong>Example 12:</strong> Use of 'f:actionListener' <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send">
+                <f:actionListener type="beans.PlayerActionListener"/>
+            </h:commandButton>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Use of 'actionListener', 'f:actionListener' and 'action' -->
+        <strong>Example 13:</strong> Use of 'actionListener', 'f:actionListener' and 'action' <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" actionListener="#{playerBean.save}" action="#{playerBean.save()}">
+                <f:actionListener type="beans.PlayerActionListener"/>
+            </h:commandButton>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Use of 'f:setPropertyActionListener' -->
+        <strong>Example 14:</strong> Use of 'f:setPropertyActionListener' <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="data">
+                <f:setPropertyActionListener target="#{playerBean.countrycode}" value="ro" />
+                <f:setPropertyActionListener target="#{playerBean.weburl}" value="http://www.rafaelnadal.com" />
+            </h:commandButton>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Set 'type' attribute as 'button' - this will not submit the form, but it works (see the JS alert) -->
+        <strong>Example 15:</strong> Set 'type' attribute as 'button' this will not submit the form, but it works (see the JS alert) <hr/>               
+        <h:form id="formId">
+            Name: <h:inputText id="nameId" value="#{playerBean.name}"/>           
+            E-mail: <h:inputText id="emailId" value="#{playerBean.email}"/>           
+            <h:commandButton type="button" value="Send" action="#{playerBean.saveAndGo()}" onclick="alert('Hello, ' + document.getElementById('formId:nameId').value + ' ! I will contact you on ' + document.getElementById('formId:emailId').value + '.');"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Set 'type' attribute as 'reset' - this will not submit the form, will just reset the inputs -->
+        <strong>Example 16:</strong> Set 'type' attribute as 'reset' - this will not submit the form, will just reset the inputs <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="#{playerBean.save()}"/>
+            <h:commandButton value="Reset" type="reset"/>            
+        </h:form>        
+        <hr/><br/>
+
+        <!-- 'Cancel' like button using 'immediate' attribute (reset inputs to empty strings) -->
+        <strong>Example 17:</strong> 'Cancel' like button using 'immediate' attribute (reset inputs to empty strings) <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}" validator="myValidator"/>           
+            <h:commandButton value="Send" action="data"/>
+            <h:commandButton value="Reset" immediate="true" action="#{playerBean.resetWithImmediate()}"/>            
+        </h:form>        
+        <h:messages style="color:red;"/>
+        <hr/><br/>
+
+        <!-- Pass extra parameters via 'f:param' -->
+        <strong>Example 18:</strong> Pass extra parameters via 'f:param' <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="#{playerBean.saveAndParam()}">                  
+                <f:param name="playerCountryCode" value="RO"/>
+                <f:param name="playerWeburl" value="http://www.rafaelnadal.com"/>
+            </h:commandButton>
+        </h:form>        
+        <hr/><br/>
+
+        <!-- Assign the value of the attribute named 'value' of a 'h:commandButton' tag via 'f:attribute' -->
+        <strong>Example 19:</strong> Assign the value of the attribute named 'value' of a 'h:commandButton' tag via 'f:attribute' <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton action="data">                  
+                <f:attribute name="value" value="Send" />
+            </h:commandButton>
+        </h:form>        
+        <hr/><br/>
+
+        <!-- Pass extra parameters via 'f:attribute' -->
+        <strong>Example 20:</strong> Pass extra parameters via 'f:attribute' <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" actionListener="#{playerBean.saveAndAttributes}" action="data">                   
+                <f:attribute id="playerCountryCode" name="playerCountryCodeAttr" value="RO"/>
+                <f:attribute id="playerWeburl" name="playerWeburlAttr" value="http://www.rafaelnadal.com"/>
+            </h:commandButton>
+        </h:form>        
+        <hr/><br/>
+
+        <!-- Include view parameters in redirect -->
+        <strong>Example 21:</strong> Include view parameters in redirect <hr/>               
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Submit" action="data?faces-redirect=true&amp;includeViewParams=true"/>
+        </h:form>        
+        <hr/><br/>
+
+        <!-- Simple AJAX submit -->
+        <strong>Example 22:</strong> Simple AJAX submit <hr/>        
+        <h:form>
+            <span>Name: #{playerBean.name} | E-mail: #{playerBean.email}</span><br/>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="#{playerBean.save()}">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+        </h:form>
+        <hr/><br/> 
+
+        <!-- Simple AJAX partial submit (only the player name and e-mail will be submitted) -->
+        <strong>Example 23:</strong> Simple AJAX partial submit (only the player name and e-mail will be submitted) <hr/>        
+        <h:form>
+            <span>Name: #{playerBean.name} | E-mail: #{playerBean.email} | Age: #{playerBean.age}</span><br/>
+            Name: <h:inputText id="nameId" value="#{playerBean.name}"/>           
+            E-mail: <h:inputText id="emailId" value="#{playerBean.email}"/> 
+            Age: <h:inputText id="ageId" value="#{playerBean.age}"/>    
+            <h:commandButton value="Send" action="#{playerBean.save()}">
+                <f:ajax execute="nameId emailId" render="@form"/>
+            </h:commandButton>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Simple 'Cancel' AJAX button -->
+        <strong>Example 24:</strong> Simple 'Cancel' AJAX button <hr/>        
+        <h:form>
+            <span>Name: #{playerBean.name} | E-mail: #{playerBean.email} | Age: #{playerBean.age}</span><br/>
+            Name: <h:inputText id="nameId" value="#{playerBean.name}"/>           
+            E-mail: <h:inputText id="emailId" value="#{playerBean.email}"/> 
+            Age: <h:inputText id="ageId" value="#{playerBean.age}"/>    
+            <h:commandButton value="Send" action="#{playerBean.save()}">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+            <h:commandButton value="Cancel">
+                <f:ajax execute="@this" render="@form"/>
+            </h:commandButton>
+        </h:form>
+        <hr/><br/>
+
+        <!-- 'Cancel' AJAX button with reset to a set of default values (empty strings) -->
+        <strong>Example 25:</strong> 'Cancel' AJAX button with reset to a set of default values (empty strings) <hr/>        
+        <h:form>
+            <span>Name: #{playerBean.name} | E-mail: #{playerBean.email} | Age: #{playerBean.age}</span><br/>
+            Name: <h:inputText id="nameId" value="#{playerBean.name}"/>           
+            E-mail: <h:inputText id="emailId" value="#{playerBean.email}"/> 
+            Age: <h:inputText id="ageId" value="#{playerBean.age}"/>    
+            <h:commandButton value="Send" action="#{playerBean.save()}">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+            <h:commandButton value="Cancel" action="#{playerBean.reset()}">
+                <f:ajax execute="@this" render="@form"/>
+            </h:commandButton>
+        </h:form>
+        <hr/><br/>       
+
+        <!-- Submit form via JavaScript (the JSF button is not visible) -->
+        <strong>Example 26:</strong> Submit form via JavaScript (the JSF button is not visible) <hr/>        
+        <input type="button" value="Fake Command" onclick="clickJSFButton();"/>
+        <h:form id="myFormId">
+            <h:inputHidden id="nameHiddenId" value="#{playerBean.name}"/>           
+            <h:inputHidden id="emailHiddenId" value="#{playerBean.email}"/>           
+            <h:commandButton id="btnId" value="Send" action="data" style="display:none; visibility: hidden; color: transparent; width:0px; height:0px;"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Place focus on a button via HTML 5, 'pt:autofocus' -->
+        <strong>Example 27:</strong> Place focus on a button via HTML 5, 'pt:autofocus' <hr/>        
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="data" pt:autofocus="true"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Skip HTML 5 validation via 'pt:formnovalidate' attribute (this will not skip JSF validation!) -->
+        <strong>Example 28:</strong> Skip HTML 5 validation via 'pt:formnovalidate' attribute (this will not skip JSF validation!) <hr/>        
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}" pt:pattern=".{2,}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}" pt:type="email" pt:required="true"/>           
+            <h:commandButton value="Send" action="data" pt:formnovalidate="formnovalidate"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- A 'Cancel' like button by skipping the HTML 5 validation via 'pt:formnovalidate' attribute (this will not skip JSF validation!) -->
+        <strong>Example 30:</strong> A 'Cancel' like button by skipping the HTML 5 validation via 'pt:formnovalidate' attribute (this will not skip JSF validation!) <hr/>        
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}" pt:pattern=".{2,}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}" pt:type="email" pt:required="true"/>           
+            <h:commandButton value="Send" action="data"/>
+            <h:commandButton value="Reset" action="#{playerBean.reset()}" pt:formnovalidate="formnovalidate"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Submit form, and open response in a new tab/window using HTML 5, 'pt:formtarget' attribute  -->
+        <strong>Example 31:</strong> Submit form, and open response in a new tab/window using HTML 5, 'pt:formtarget' attribute <hr/>        
+        <span>Name: #{playerBean.name} | E-mail: #{playerBean.email}</span>
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="#{playerBean.save()}" pt:formtarget="_blank"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Submit form, and open response in a HTML 'iframe' using HTML 5, 'pt:formtarget' attribute  -->
+        <strong>Example 32:</strong> Submit form, and open response in a HTML 'iframe' using HTML 5, 'pt:formtarget' attribute <hr/>                
+        <h:form>
+            Name: <h:inputText value="#{playerBean.name}"/>           
+            E-mail: <h:inputText value="#{playerBean.email}"/>           
+            <h:commandButton value="Send" action="data" pt:formtarget="myiframe"/>
+        </h:form>
+        <iframe name="myiframe" style="width:100%; height:150px;background-color: cadetblue;">
+            <p>Your browser does not support iframes.</p>
+        </iframe>
+        <hr/><br/>                
+
+    </h:body>
+</html>
+
+
+
