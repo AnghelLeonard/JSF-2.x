@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>                
+        </title>      
+        <style type="text/css">
+
+            .ui-tabs-vertical {
+                width: 60em; 
+                height:38em;                 
+            }
+
+            .ui-tabs-vertical .ui-tabs-nav {
+                padding: .2em .1em .2em .2em; 
+                float: left; 
+                width: 12em;
+            }
+
+            .ui-tabs-vertical .ui-tabs-nav li {
+                clear: left;
+                width: 100%;
+                padding-top:120px; 
+                background: url('#{resource["default:images/atp_d.png"]}'); 
+                background-repeat: no-repeat;
+                background-position: center; 
+                border-top-width: 1px !important;
+                border-bottom-width: 1px !important; 
+                border-right-width: 1px !important;    
+                 -webkit-transform: rotate(270deg);
+                -moz-transform: rotate(270deg);
+                -o-transform: rotate(270deg);
+            }
+            
+            .ui-tabs-vertical .ui-tabs-nav li a {
+                display:block;               
+                padding-left: 30px;      
+                /*
+                you ca apply rotate here, to rotate only the text
+                of course, afterwards, you have to perform the proper adjustments
+                -webkit-transform: rotate(270deg);
+                -moz-transform: rotate(270deg);
+                -o-transform: rotate(270deg);
+                */
+            }
+
+            .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected {
+                background: url('#{resource["default:images/atp_s.png"]}');
+                background-repeat: no-repeat;
+                background-position: center;                            
+            }
+
+            .ui-tabs-vertical .ui-tabs-panel { 
+                padding: 1em; 
+                float: right; 
+                width: 40em;
+            }                                
+
+            /* this will affect the fonts of all PrimeFaces components */
+            .ui-widget {
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 12px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 400;
+                line-height: 20px;                
+            }           
+        </style>
+    </h:head>
+    <h:body>             
+
+        <p:tabView styleClass="ui-tabs-vertical">
+            <p:tab title="Rafael Nadal">                
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:graphicImage library="default" name="images/rafa_l.jpg" width="70" height="100"/>
+                    <h:outputText value="Rafael 'Rafa' Nadal Parera (born 3 June 1986) is a Spanish professional tennis player currently ..." />
+                </h:panelGrid>               
+            </p:tab>
+            <p:tab title="Novak Djokovic">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:graphicImage library="default" name="images/novak_l.jpg" width="70" height="100"/>
+                    <h:outputText value="Novak Djokovic (born 22 May 1987) is a Serbian professional tennis player who is currently ..." />
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Roger Federer">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:graphicImage library="default" name="images/roger_l.jpg" width="70" height="100"/>
+                    <h:outputText value="Roger Federer (born 8 August 1981) is a Swiss professional tennis player who is currently ..." />
+                </h:panelGrid>
+            </p:tab>
+        </p:tabView>
+
+    </h:body>
+</html>
+
