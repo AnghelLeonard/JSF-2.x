@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"            
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>JSF message examples</title>     
+        <style type="text/css">
+            .messagecss {
+                color: red;
+            }
+            .infocss{
+                background-color: gold;
+                color:green;   
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 24px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 500;
+                line-height: 26.3999996185303px;
+            }
+            .warncss{
+                background-color: brown;
+                color:orange;   
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 24px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 500;
+                line-height: 26.3999996185303px;
+            }
+            .errorcss{
+                background-color: chartreuse;
+                color:red;   
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 24px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 500;
+                line-height: 26.3999996185303px;
+            }
+            .fatalcss{
+                background-color: skyblue;
+                color:magenta;   
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 24px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 500;
+                line-height: 26.3999996185303px;
+            }
+        </style>
+    </h:head>
+    <h:body> 
+        <!-- Basic/common usage -->    
+        <strong>Example 1:</strong> Basic/common usage <hr/>
+        <h:form>
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">
+                <f:validateLongRange for="ageId" minimum="18" maximum="45" />
+            </h:inputText>
+            <h:commandButton value="Send"/>
+            <h:message id="ageMsgId" for="ageId"/>
+        </h:form>
+        <hr/><br/>       
+
+        <!-- Styling messages with inner CSS code -->    
+        <strong>Example 2:</strong> Styling messages with inner CSS code <hr/>
+        <h:form>
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">
+                <f:validateLongRange for="ageId" minimum="18" maximum="45" />
+            </h:inputText>
+            <h:commandButton value="Send"/>
+            <h:message for="ageId" style="color: red;"/>
+        </h:form>
+        <hr/><br/>  
+
+        <!-- Styling messages with CSS class -->    
+        <strong>Example 3:</strong>  Styling messages with CSS class <hr/>
+        <h:form>
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">
+                <f:validateLongRange for="ageId" minimum="18" maximum="45" />
+            </h:inputText>
+            <h:commandButton value="Send"/>
+            <h:message for="ageId" styleClass="messagecss"/>
+        </h:form>
+        <hr/><br/> 
+
+        <!-- The 'infoStyle/infoClass' - Styling an info message with inner style / CSS class (only 'FacesMessage.SEVERITY_INFO' will have this style) -->    
+        <strong>Example 4:</strong> The 'infoStyle/infoClass' - Styling an info message with inner style / CSS class (only 'FacesMessage.SEVERITY_INFO' will have this style) <hr/>
+        <h:form id="IformId">
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">                
+                <f:validateLongRange for="ageId" minimum="18" maximum="45" />
+            </h:inputText>
+            <h:commandButton value="Send" action="#{playerBean.info()}"/>
+            <!-- infoStyle -->
+            <h:message for="ageId" infoStyle="color:green;font-size:20px;"/>  
+            <!-- infoClass --> 
+            <h:message for="ageId" infoClass="infocss"/>          
+        </h:form>
+        <hr/><br/>    
+
+        <!-- The 'warnStyle/warnClass' - Styling an warning message with inner style / CSS class (only 'FacesMessage.SEVERITY_WARN' will have this style) -->    
+        <strong>Example 5:</strong>  The 'warnStyle/warnClass' - Styling an warning message with inner style / CSS class (only 'FacesMessage.SEVERITY_WARN' will have this style) <hr/>
+        <h:form id="WformId">
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">                
+                <f:validateLongRange for="ageId" minimum="18" maximum="45" />
+            </h:inputText>
+            <h:commandButton value="Send" action="#{playerBean.warn()}"/>
+            <!-- warnStyle -->
+            <h:message for="ageId" warnStyle="color:orange;font-size:20px;"/>  
+            <!-- warnClass --> 
+            <h:message for="ageId" warnClass="warncss"/>
+        </h:form>
+        <hr/><br/> 
+
+        <!-- The 'errorStyle/errorClass' - Styling an error message with inner style / CSS class (only 'FacesMessage.SEVERITY_ERROR' will have this style) -->    
+        <strong>Example 6:</strong> The 'errorStyle/errorClass' - Styling an error message with inner style / CSS class (only 'FacesMessage.SEVERITY_ERROR' will have this style) <hr/>
+        <h:form id="EformId">
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">                
+                <f:validateLongRange for="ageId" minimum="18" maximum="45" />
+            </h:inputText>
+            <h:commandButton value="Send" action="#{playerBean.error()}"/>
+            <!-- errorStyle -->
+            <h:message for="ageId" errorStyle="color:red;font-size:20px;"/>           
+            <!-- errorClass -->
+            <h:message for="ageId" errorClass="errorcss"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- The 'fatalStyle/fatalClass' - Styling a fatal error message with inner style / CSS class (only 'FacesMessage.SEVERITY_FATAL' will have this style) -->    
+        <strong>Example 7:</strong> The 'fatalStyle/fatalClass' - Styling a fatal error message with inner style / CSS class (only 'FacesMessage.SEVERITY_FATAL' will have this style) <hr/>
+        <h:form id="FformId">
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">                
+                <f:validateLongRange for="ageId" minimum="18" maximum="45" />
+            </h:inputText>
+            <h:commandButton value="Send" action="#{playerBean.fatal()}"/>
+            <!-- fatalStyle -->
+            <h:message for="ageId" fatalStyle="color:magenta;font-size:20px;"/>           
+            <!-- fatalClass -->
+            <h:message for="ageId" fatalClass="fatalcss"/> 
+        </h:form>
+        <hr/><br/>
+
+        <!-- The 'xxxStyle/xxxClass' - Styling an info/warn/error/fatal message with inner style / CSS class -->    
+        <strong>Example 8:</strong> The 'xxxStyle/xxxClass' - Styling an info/warn/error/fatal message with inner style / CSS class <hr/>
+        <h:form id="ALLformId">
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">                
+                <f:validateLongRange for="ageId" minimum="18" maximum="45" />
+            </h:inputText>
+            <h:commandButton value="Send" action="#{playerBean.randomMessage()}"/>                       
+            <!-- xxxStyle -->
+            <h:message for="ageId" infoStyle="color:green;font-size:20px;" warnStyle="color:orange;font-size:20px;" errorStyle="color:red;font-size:20px;" fatalStyle="color:magenta;font-size:20px;"/> 
+            <!-- xxxClass -->
+            <h:message for="ageId" infoClass="infocss" warnClass="warncss" errorClass="errorcss" fatalClass="fatalcss"/> 
+        </h:form>
+        <hr/><br/>
+
+        <!-- Show message details, don't show summary - this is default -->    
+        <strong>Example 9:</strong> Show message details, don't show summary - this is default <hr/>
+        <h:form>
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">
+                <f:validator validatorId="myValidator"/>
+            </h:inputText>
+            <h:commandButton value="Send"/>
+            <h:message for="ageId" showSummary="false" showDetail="true" errorClass="errorcss"/>
+        </h:form>
+        <hr/><br/> 
+
+        <!-- Show message summary, don't show detail -->    
+        <strong>Example 10:</strong> Show message summary, don't show detail <hr/>
+        <h:form>
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">
+                <f:validator validatorId="myValidator"/>
+            </h:inputText>
+            <h:commandButton value="Send"/>
+            <h:message for="ageId" showSummary="true" showDetail="false" errorClass="errorcss"/>
+        </h:form>
+        <hr/><br/> 
+
+        <!-- Show message summary and detail -->    
+        <strong>Example 11:</strong> Show message summary and detail <hr/>
+        <h:form>
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">
+                <f:validator validatorId="myValidator"/>
+            </h:inputText>
+            <h:commandButton value="Send"/>
+            <h:message for="ageId" showSummary="true" showDetail="true" errorClass="errorcss"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Show message summary, and detail via 'tooltip' attribute -->    
+        <strong>Example 12:</strong> Show message summary, and detail via 'tooltip' attribute <hr/>
+        <h:form>
+            <h:outputLabel value="Age:" for="ageId"/>
+            <h:inputText id="ageId" value="#{playerBean.age}" label="age">
+                <f:validator validatorId="myValidator"/>
+            </h:inputText>
+            <h:commandButton value="Send"/>
+            <h:message for="ageId" tooltip="true" showSummary="true" showDetail="false" errorClass="errorcss"/>
+        </h:form>
+        <hr/><br/>                
+    </h:body>
+</html>
+
