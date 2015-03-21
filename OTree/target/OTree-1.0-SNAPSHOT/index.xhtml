@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>                
+    </h:head>
+    <h:body>     
+        <h3>Selected file: <h:outputText id="selectedFile" value="#{treeBean.selected}"/></h3>
+        <h:panelGroup id="pathTree">            
+            <h:form id="form">
+                <o:tree value="#{treeBean.tree}" var="t" varNode="node">
+                    <o:treeNode>
+                        <ul type="none">
+                            <o:treeNodeItem>
+                                <li>        
+                                    <h:panelGroup rendered="#{t.type eq 'file' and t.visible}">                                   
+                                        <h:graphicImage library="default" name="icons/file.png" title="#{t.path}" alt="#{t.path}"/>                                        
+                                        <h:commandLink value="#{t.name}" action="#{treeBean.selectedFile(t.path)}">
+                                            <f:ajax execute="@form" render=":selectedFile"/>
+                                        </h:commandLink>                                        
+                                        #{t.size} 
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{t.type eq 'folder' and t.visible}">                                                                        
+                                        <h:commandButton image="resources/default/icons/#{t.expanded ? 'folder_open':'folder_close'}.png" action="#{treeBean.showHideItems(node)}">
+                                            <f:ajax execute="@form" render="@form" />
+                                        </h:commandButton>                                        
+                                        #{t.name}                                                                 
+                                        <o:treeInsertChildren />
+                                    </h:panelGroup>                                                                     
+                                </li>                            
+                            </o:treeNodeItem>
+                        </ul>
+                    </o:treeNode>                    
+                </o:tree>
+            </h:form>
+        </h:panelGroup>            
+    </h:body>
+</html>
+
