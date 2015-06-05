@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:o="http://omnifaces.org/ui">
+    <h:head>
+        <title>Display SVG image via OmniFaces</title>
+    </h:head>
+    <h:body>   
+        Entire image (scaled to 400x400)
+        <o:graphicImage value="#{imageBean.imageAsByteArrayFromResource()}" type="svg" lastModified="#{startup}" width="400" height="400" />
+        Fragment
+        <o:graphicImage value="#{imageBean.imageAsByteArrayFromResource()}" type="svg" lastModified="#{startup}" width="400" height="400" fragment="svgView(viewBox(300,700,200,700))" />
+    </h:body>
+</html>
+
