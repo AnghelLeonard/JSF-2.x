@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>JSF selectBooleanCheckbox examples</title> 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            // see https://css-tricks.com/indeterminate-checkboxes/
+            $(function () {                
+                $('input[type="checkbox"]').change(function (e) {
+                    var checked = $(this).prop("checked"),
+                            container = $(this).parent(),
+                            siblings = container.siblings();
+
+                    container.find('input[type="checkbox"]').prop({
+                        indeterminate: false,
+                        checked: checked
+                    });
+
+                    function checkSiblings(el) {
+                        var parent = el.parent().parent(),
+                                all = true;
+
+                        el.siblings().each(function () {
+                            return all = ($(this).children('input[type="checkbox"]').prop("checked") === checked);
+                        });
+                        //<![CDATA[ 
+                        if (all && checked) {
+                            //]]>
+                            parent.children('input[type="checkbox"]').prop({
+                                indeterminate: false,
+                                checked: checked
+                            });
+                            checkSiblings(parent);
+                            //<![CDATA[
+                        } else if (all && !checked) {
+                            //]]>
+                            parent.children('input[type="checkbox"]').prop("checked", checked);
+                            parent.children('input[type="checkbox"]').prop("indeterminate", (parent.find('input[type="checkbox"]:checked').length > 0));
+                            checkSiblings(parent);
+                        } else {
+                            el.parents("li").children('input[type="checkbox"]').prop({
+                                indeterminate: true,
+                                checked: false
+                            });
+                        }
+                    }
+
+                    checkSiblings(container);
+                });
+            });
+        </script>
+        <style type="text/css">
+            ul { 
+                list-style: none;
+                margin: 5px 20px;
+            }
+            li {
+                margin: 0 0 5px 0;
+            }
+            .slide {               
+                width: 80px;
+                height: 30px;
+                background: #333;
+                margin: 5px auto;
+                position: relative;
+                border-radius: 50px;
+                box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+            }
+            .slide:after {
+                content: '';
+                position: absolute;
+                top: 14px;
+                left: 14px;
+                height: 2px;
+                width: 52px;
+                background: #111;
+                border-radius: 50px;
+                box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+            }
+            .slide label {
+                display: block;
+                width: 22px;
+                height: 22px;
+                cursor: pointer;
+                position: absolute;
+                top: 4px;
+                z-index: 1;
+                left: 4px;
+                background: #fcfff4;
+                border-radius: 50px;
+                -webkit-transition: all 0.4s ease;
+                transition: all 0.4s ease;
+                box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+                background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+                background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+            }
+            .slide label:after {
+                content: '';
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                background: #333;
+                border-radius: 50px;
+                box-shadow: inset 0px 1px 1px black, 0px 1px 0px rgba(255, 255, 255, 0.9);
+            }
+            .slide input[type=checkbox] {
+                visibility: hidden;
+            }
+            .slide input[type=checkbox]:checked + label {
+                left: 54px;
+            }
+            .slide input[type=checkbox]:checked + label:after {
+                background: #27ae60;                
+            }
+            .rounded {
+                width: 28px;
+                height: 28px;
+                position: relative;
+                margin: 5px auto;
+                background: #fcfff4;
+                background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+                background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+                border-radius: 50px;
+                box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+            }
+            .rounded label {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                cursor: pointer;
+                background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
+                background: linear-gradient(to bottom, #222222 0%, #45484d 100%);
+                border-radius: 50px;
+                box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+            }
+            .rounded label:after {
+                content: '';
+                width: 9px;
+                height: 5px;
+                position: absolute;
+                top: 5px;
+                left: 4px;
+                border: 3px solid #fcfff4;
+                border-top: none;
+                border-right: none;
+                background: transparent;
+                opacity: 0;
+                -webkit-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+            .rounded label:hover::after {
+                opacity: 0.3;
+            }
+            .rounded input[type=checkbox] {
+                visibility: hidden;
+            }
+            .rounded input[type=checkbox]:checked + label:after {
+                opacity: 1;
+            }           
+        </style>
+    </h:head>
+    <h:body> 
+        <!-- Basic/common usage (I) -->    
+        <strong>Example 1:</strong> Basic/common usage (I) without label defined via &lt;h:outputLabel&gt;<hr/>
+        <h:form>           
+            Remember me: 
+            <h:selectBooleanCheckbox value="#{playerBean.rememberme}"/>
+            <h:commandButton value="Submit" action="data"/>
+        </h:form>
+        <hr/><br/>  
+
+        <!-- Basic/common usage (II) with label defined via <h:outputLabel> -->    
+        <strong>Example 2:</strong> Basic/common usage (II) with label defined via &lt;h:outputLabel&gt;<hr/>
+        <h:form>                       
+            <h:selectBooleanCheckbox id="checkboxId" value="#{playerBean.rememberme}"/>
+            <h:outputLabel for="checkboxId">Remember me</h:outputLabel>
+            <h:commandButton value="Submit" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Styling messages with CSS class (I) -->    
+        <strong>Example 3:</strong> Styling messages with CSS class (I) <hr/>
+        <h:form>
+            Remember me:
+            <div class="slide">                                  
+                <h:selectBooleanCheckbox id="slide" value="#{playerBean.rememberme}"/>
+                <h:outputLabel for="slide"></h:outputLabel>
+            </div>
+            <h:commandButton value="Submit" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Styling messages with CSS class (II) -->    
+        <strong>Example 4:</strong> Styling messages with CSS class (II) <hr/>
+        <h:form>
+            Remember me:
+            <div class="rounded">                 
+                <h:selectBooleanCheckbox id="rounded" value="#{playerBean.rememberme}"/>
+                <h:outputLabel for="rounded"></h:outputLabel>
+            </div>
+            <h:commandButton value="Submit" action="data"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Use valueChangeListener with h:selectBooleanCheckbox -->    
+        <strong>Example 5:</strong> Use valueChangeListener with h:selectBooleanCheckbox <hr/>
+        <h:form>
+            Remember me: 
+            <h:selectBooleanCheckbox value="#{playerBean.rememberme}" onchange="this.form.submit();" valueChangeListener="#{playerBean.rememberAction}"/>                       
+        </h:form>
+        #{playerBean.rememberme}
+        <hr/><br/>
+
+        <!-- AJAXify h:selectBooleanCheckbox -->    
+        <strong>Example 6:</strong> AJAXify h:selectBooleanCheckbox <hr/>
+        <h:form>
+            Remember me: 
+            <h:selectBooleanCheckbox value="#{playerBean.rememberme}">                       
+                <f:ajax execute="@this" render="@form"/>
+            </h:selectBooleanCheckbox>    
+            #{playerBean.rememberme}
+        </h:form>        
+        <hr/><br/>
+
+        <!-- AJAXify h:selectBooleanCheckbox with valueChangeListener -->    
+        <strong>Example 7:</strong> AJAXify h:selectBooleanCheckbox with valueChangeListener <hr/>
+        <h:form>
+            Remember me: 
+            <h:selectBooleanCheckbox value="#{playerBean.rememberme}" valueChangeListener="#{playerBean.rememberAction}">                       
+                <f:ajax execute="@this" render="@form"/>
+            </h:selectBooleanCheckbox>    
+            #{playerBean.rememberme}
+        </h:form>        
+        <hr/><br/>
+
+        <!-- Indeterminate checkbox, see https://css-tricks.com/indeterminate-checkboxes/ -->    
+        <strong>Example 8:</strong> Indeterminate checkbox, see https://css-tricks.com/indeterminate-checkboxes/ <hr/>
+        <h:form id="indeterminateForm">           
+            <ul>
+                <li>
+                    <h:selectBooleanCheckbox id="basic"/>
+                    <h:outputLabel for="basic">Install</h:outputLabel>
+                    <ul>
+                        <li>
+                            <h:selectBooleanCheckbox id="basic-1"/>
+                            <h:outputLabel for="basic-1">Demos</h:outputLabel>
+                        </li>
+                        <li>
+                            <h:selectBooleanCheckbox id="basic-2"/>
+                            <h:outputLabel for="basic-2">Development</h:outputLabel>
+                            <ul>
+                                <li>
+                                    <h:selectBooleanCheckbox id="basic-2-1"/>
+                                    <h:outputLabel for="basic-2-1">Simple</h:outputLabel>
+                                </li>
+                                <li>
+                                    <h:selectBooleanCheckbox id="basic-2-2"/>
+                                    <h:outputLabel for="basic-2-2">Advance</h:outputLabel>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h:selectBooleanCheckbox id="basic-3"/>
+                            <h:outputLabel for="basic-3">Debug</h:outputLabel>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h:selectBooleanCheckbox id="repair"/>
+                    <h:outputLabel for="repair">Repair</h:outputLabel>
+                    <ul>
+                        <li>
+                            <h:selectBooleanCheckbox id="repair-1"/>
+                            <h:outputLabel for="repair-1">Demos</h:outputLabel>
+                        </li>
+                        <li>
+                            <h:selectBooleanCheckbox id="repair-2"/>
+                            <h:outputLabel for="repair-2">Tools</h:outputLabel>
+                        </li>
+                        <li>
+                            <h:selectBooleanCheckbox id="repair-3"/>
+                            <h:outputLabel for="repair-3">Kit</h:outputLabel>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h:commandButton value="Submit" action="data"/>
+        </h:form>        
+        <hr/><br/>  
+
+        <!-- Require the user to tick the desired checkbox (use OmniFaces) -->    
+        <strong>Example 9:</strong> Require the user to tick the desired checkbox (use OmniFaces) <hr/>
+        <h:form>                        
+            <h:panelGrid columns="3">
+                <h:outputLabel for="termsId" value="Tick terms and conditions:" />
+                <h:selectBooleanCheckbox id="termsId" value="#{playerBean.terms}" requiredMessage="You must accept terms and conditions!">
+                    <f:validator validatorId="omnifaces.RequiredCheckboxValidator" />
+                </h:selectBooleanCheckbox>
+                <h:commandButton value="Submit" action="#{playerBean.termsAction()}"/>                
+            </h:panelGrid>            
+            <h:message for="termsId" />            
+        </h:form>    
+        <hr/><br/>  
+
+        <!-- Require the user to tick the desired checkbox (use HTML 5) -->    
+        <strong>Example 10:</strong> Require the user to tick the desired checkbox (use HTML 5) <hr/>     
+        <h:form>                        
+            <h:panelGrid columns="3">
+                <h:outputLabel for="termsId" value="Tick terms and conditions:" />
+                <h:selectBooleanCheckbox id="termsId" value="#{playerBean.terms}" pt:required="true" pt:x-moz-errormessage="You must accept terms and conditions!" title="You must accept terms and conditions!" />
+                <h:commandButton value="Submit" action="#{playerBean.termsAction()}"/>                
+            </h:panelGrid>            
+            <h:message for="termsId" />            
+        </h:form>
+        <hr/><br/> 
+
+        <!-- Check on client side (via JS) if a checkbox is selected -->
+        <strong>Example 11:</strong> Check on client side (via JS) if a checkbox is selected <hr/>
+        <h:form id="formId">           
+            Remember me: 
+            <h:selectBooleanCheckbox id="rememberId" value="#{playerBean.rememberme}"/>
+            <h:commandButton value="Submit" action="data" onclick="isSelected();"/>
+        </h:form>
+        <script type="text/javascript">
+            function isSelected() {
+                alert($('#formId:rememberId'.replace(/:/g, "\\:")).is(':checked'));
+            }
+        </script>
+        <hr/><br/>                  
+    </h:body>
+</html>
+
