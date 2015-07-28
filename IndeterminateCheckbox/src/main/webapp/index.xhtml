@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Indeterminate Checkboxes</title>  
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <h:outputScript library="default" name="js/script.js"/>
+    </h:head>
+    <h:body>            
+        <h:form>
+            <o:tree value="#{checksBean.tree}" var="t">
+                <o:treeNode>               
+                    <ul>
+                        <o:treeNodeItem>
+                            <li>
+                                <h:selectBooleanCheckbox id="checkboxId" value="#{t.value}"/>
+                                <h:outputLabel for="checkboxId">#{t.label}</h:outputLabel>
+                                <o:treeInsertChildren />
+                            </li>
+                        </o:treeNodeItem>
+                    </ul>                
+                </o:treeNode>
+            </o:tree>
+            <h:commandButton value="Submit">            
+                <f:ajax execute="@form" render=":panelId"/>
+            </h:commandButton>
+        </h:form>
+        <hr/>
+        <h:panelGroup id="panelId">
+            <o:tree value="#{checksBean.tree}" var="t">
+                <o:treeNode>               
+                    <ul>
+                        <o:treeNodeItem>
+                            <li>
+                                #{t.label}:#{t.value}
+                                <o:treeInsertChildren />
+                            </li>
+                        </o:treeNodeItem>
+                    </ul>                
+                </o:treeNode>
+            </o:tree>
+        </h:panelGroup>
+    </h:body>
+</html>
+
