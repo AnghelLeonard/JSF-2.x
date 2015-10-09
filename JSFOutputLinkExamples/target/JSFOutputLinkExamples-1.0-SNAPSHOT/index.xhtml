@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>JSF outputLink examples</title>
+        <style type="text/css">
+            .linkcss{
+                color: red;
+                background-color: black;
+            }
+        </style>
+    </h:head>
+    <h:body>
+
+        <!-- Basic/common usage I -->
+        <strong>Example 1:</strong> Basic/common usage I - navigate to an absolute URL<hr/>
+        <h:outputLink value="http://www.google.com">Google</h:outputLink>
+        <hr/><br/>
+        
+         <!-- Basic/common usage II -->
+        <strong>Example 2:</strong> Basic/common usage II - navigate to a local HTML page, welcome.html<hr/>
+        <h:outputLink value="welcome.html">Welcome page (HTML)</h:outputLink>
+        <hr/><br/>
+        
+        <!-- Basic/common usage III -->
+        <strong>Example 3:</strong> Basic/common usage III - navigate to a local JSF page, welcome.xhtml<hr/>
+        <h:outputLink value="welcome.xhtml">Welcome page (JSF)</h:outputLink>
+        <hr/><br/>
+
+        <!-- value provided from a managed bean  -->
+        <strong>Example 4:</strong> Value provided from a managed bean  <hr/>
+        <h:outputLink value="#{welcomeBean.page}">Welcome page</h:outputLink>
+        <hr/><br/>
+
+        <!-- Disabled link (rendered as a "span" element) -->
+        <strong>Example 5:</strong> Disabled link (rendered as a "span" element) <hr/>
+        <h:outputLink value="welcome.xhtml" disabled="true">Welcome page</h:outputLink>
+        <hr/><br/>
+
+        <!-- Link to the same page (the "value" attribute is omitted) -->
+        <strong>Example 6:</strong> Link to the same page (the "value" attribute is omitted)<hr/>
+        <h:outputLink>Link to the same page</h:outputLink>
+        <hr/><br/>
+        
+        <!-- Call a JavaScript function -->
+        <strong>Example 7:</strong> Call JavaScript function<hr/>
+        <h:outputLink value="javascript:alert('Hello World!');">Say "hello" !</h:outputLink>
+        <hr/><br/>
+
+        <!-- Using 'id' attribute to render <a id="the_id" name="the_id" ... > -->
+        <strong>Example 8:</strong> Using 'id' attribute to render &lt;a id="the_id" name="the_id" ... &gt; <hr/>
+        <h:outputLink id="welcomeId" value="welcome.xhtml">Welcome page (anchor)</h:outputLink>
+        <!-- this can be used as a HTML anchor -->
+        <h:link value="Welcome Anchor" fragment="welcomeId"/>
+        <hr/><br/>
+
+        <!-- Add a hard-coded URL query string -->
+        <strong>Example 9:</strong> Add a hard-coded URL query string <hr/>
+        <h:outputLink value="welcomewithparams.xhtml?name1=Rafael">Welcome page</h:outputLink>
+        <hr/><br/>        
+
+        <!-- Add an URL query string with <f:param> -->
+        <strong>Example 10:</strong> Add an URL query string with &lt;f:param&gt;<hr/>
+        <h:outputLink value="welcomewithparams.xhtml">
+            Welcome page
+            <f:param name="name1" value="Roger"/>
+            <f:param name="name2" value="Rafa"/>
+        </h:outputLink>
+        <hr/><br/>
+                
+        <!-- Create a mailto link -->
+        <strong>Example 11:</strong> Create a mailto link<hr/>
+        <h:outputLink value="mailto:leoprivacy@yahoo.com">
+            Send email
+            <f:param name="Subject" value="JSF news"/>
+        </h:outputLink>
+        <hr/><br/>
+
+        <!-- Use a CSS class to style link -->
+        <strong>Example 12:</strong> Use a CSS class to style link <hr/>
+        <h:outputLink value="welcome.xhtml" styleClass="linkcss">Welcome page</h:outputLink>
+        <hr/><br/>
+
+        <!-- Use inline CSS to style link -->
+        <strong>Example 13:</strong> Use inline CSS to style link <hr/>
+        <h:outputLink value="welcome.xhtml" style="color: red; background-color: black;">Welcome page</h:outputLink>
+        <hr/><br/>
+
+        <!-- Use image link -->
+        <strong>Example 14:</strong> Use image link <hr/>
+        <h:outputLink value="welcome.xhtml">
+            <h:graphicImage library="default" name="images/welcome.gif" />
+        </h:outputLink>
+        <hr/><br/>
+
+        <!-- Use HTML 5 'download' attribute to download link -->
+        <strong>Example 15:</strong> Use HTML 5 'download' attribute to download link <hr/>
+        <h:outputLink value="welcome.xhtml" pt:download="welcomePage">
+            <h:graphicImage library="default" name="images/download.png" />
+        </h:outputLink>
+        <!-- this will download the content of welcome.xhtml page as, welcomePage.xhtml -->
+        <hr/><br/>
+
+    </h:body>
+</html>
+
