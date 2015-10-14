@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
@@ -17,7 +16,7 @@ public class PlayerBean implements Serializable {
 
     private static final Logger LOG = Logger.getLogger(PlayerBean.class.getName());
     private static final long serialVersionUID = 1L;
-
+   
     private String selectedPlayer;
     private Integer selectedRank;
     private Player selectedPlayerObj;
@@ -53,10 +52,9 @@ public class PlayerBean implements Serializable {
         playersMap.put("Rafa", "Rafael Nadal"); //label, value
         playersMap.put("Roger F", "Roger Federer");
         playersMap.put("Nole", "Novak Djokovic");
-    }
-
-    @PostConstruct
-    public void init() {
+    }    
+        
+    public PlayerBean() {
         //selectedPlayer = "Roger Federer";
     }
     
