@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>JSF selectOneMenu examples</title>
+        <style type="text/css">
+            .selectOneMenu-css{                
+                color:#f00; /* Text colour, blue */
+                background-color:#ddd; /* Background colour, light gray */
+                font-family:"Courier New",Courier; /* Different font */
+                font-size:1em; /* Bigger text */              
+                font-weight:bold; /* Bold text */
+                text-align:right; /* Change text alignment */
+            }
+        </style>
+    </h:head>
+    <h:body> 
+        <!-- Basic/common usage (I) - using hard-coded f:selectItem -->    
+        <strong>Example 1:</strong> Basic/common usage (I) - using hard-coded f:selectItem<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}">
+                <f:selectItem itemValue="Rafael Nadal" itemLabel="Rafa" />
+                <f:selectItem itemValue="Roger Federer" itemLabel="Roger F" />
+                <f:selectItem itemValue="Novak Djokovic" itemLabel="Nole" />
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/>  
+                
+        <!-- Basic/common usage (II) - "populate" f:selectItems from a Map -->    
+        <strong>Example 2:</strong> Basic/common usage (II) - "populate" f:selectItems from a Map<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}">
+                <f:selectItems value="#{playerBean.playersMap}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Basic/common usage (III) - "populate" f:selectItems from an array of Object -->    
+        <strong>Example 3:</strong> Basic/common usage (III) - "populate" f:selectItems from an array of Object<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}">
+                <f:selectItems value="#{playerBean.playersArray}" var="t" itemLabel="#{t.label}" itemValue="#{t.value}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Preselect an item via the bean's (post) constructor -->    
+        <strong>Example 4:</strong> Preselect an item via the bean's (post) constructor<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}">
+                <f:selectItems value="#{playerBean.playersArray}" var="t" itemLabel="#{t.label}" itemValue="#{t.value}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Disabled item using 'itemDisabled' attribute -->    
+        <strong>Example 5:</strong> Disabled item using 'itemDisabled' attribute <hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}">
+                <f:selectItem itemValue="Rafael Nadal" itemLabel="Rafa" />
+                <f:selectItem itemValue="Roger Federer" itemLabel="Roger F" itemDisabled="true" />
+                <f:selectItem itemValue="Novak Djokovic" itemLabel="Nole" />
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Styling messages with inner CSS  -->    
+        <strong>Example 6:</strong> Styling messages with inner CSS<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}" style="color:#00f;">
+                <f:selectItem itemValue="Rafael Nadal" itemLabel="Rafa" />
+                <f:selectItem itemValue="Roger Federer" itemLabel="Roger F" />
+                <f:selectItem itemValue="Novak Djokovic" itemLabel="Nole" />
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/>
+        
+        <!-- Styling messages with CSS class -->    
+        <strong>Example 7:</strong> Styling messages with CSS class<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}" styleClass="selectOneMenu-css">
+                <f:selectItem itemValue="Rafael Nadal" itemLabel="Rafa" />
+                <f:selectItem itemValue="Roger Federer" itemLabel="Roger F" />
+                <f:selectItem itemValue="Novak Djokovic" itemLabel="Nole" />
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/>
+                
+        <!-- Add a no selection option -->    
+        <strong>Example 8:</strong> Add a no selection option<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}">
+                <f:selectItem itemLabel="Select a player ..." noSelectionOption="true"/>
+                <f:selectItems value="#{playerBean.playersArray}" var="t" itemLabel="#{t.label}" itemValue="#{t.value}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>       
+        <hr/><br/>  
+        
+        <!-- Use a built-in converter -->    
+        <strong>Example 9:</strong> Use a built-in converter<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedRank}" converter="javax.faces.Integer">                
+                <f:selectItems value="#{playerBean.playersRanks}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>  
+        <hr/><br/>  
+        
+        <!-- Use a custom converter -->    
+        <strong>Example 10:</strong> Use a custom converter<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayerObj}" converter="playerConverter">                
+                <f:selectItems value="#{playerBean.playersList}" var="t" itemLabel="#{t.label}" itemValue="#{t}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>  
+        <hr/><br/>  
+        
+        <!-- Use the omnifaces.SelectItemsConverter converter -->    
+        <strong>Example 11:</strong> Use the omnifaces.SelectItemsConverter converter<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayerObj}" converter="omnifaces.SelectItemsConverter">                
+                <f:selectItems value="#{playerBean.playersList}" var="t" itemLabel="#{t.label}" itemValue="#{t}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>  
+        <hr/><br/>  
+        
+        <!-- Use the omnifaces.SelectItemsIndexConverter converter -->    
+        <strong>Example 12:</strong> Use the omnifaces.SelectItemsIndexConverter converter<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayerObj}" converter="omnifaces.SelectItemsIndexConverter">                
+                <f:selectItems value="#{playerBean.playersList}" var="t" itemLabel="#{t.label}" itemValue="#{t}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/>  
+        
+        <!-- Use HTML 5 'required' attribute (specifies that the user is required to select a value before submitting the form) -->    
+        <strong>Example 13:</strong> Use HTML 5 'required' attribute (specifies that the user is required to select a value before submitting the form)<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}" pt:required="true" required="true">
+                <f:selectItem itemLabel="Select a player ..." noSelectionOption="true"/>
+                <f:selectItem itemValue="Rafael Nadal" itemLabel="Rafa" />
+                <f:selectItem itemValue="Roger Federer" itemLabel="Roger F" />
+                <f:selectItem itemValue="Novak Djokovic" itemLabel="Nole" />
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/> 
+                
+        <!-- Use HTML 5 'autofocus' attribute (specifies that the drop-down list should automatically get focus when the page loads) -->    
+        <strong>Example 14:</strong> Use HTML 5 'autofocus' attribute (specifies that the drop-down list should automatically get focus when the page loads)<hr/>
+        <h:form>           
+            <h:selectOneMenu value="#{playerBean.selectedPlayer}" pt:autofocus="true">
+                <f:selectItem itemValue="Rafael Nadal" itemLabel="Rafa" />
+                <f:selectItem itemValue="Roger Federer" itemLabel="Roger F" />
+                <f:selectItem itemValue="Novak Djokovic" itemLabel="Nole" />
+            </h:selectOneMenu>
+            <h:commandButton value="Select" action="#{playerBean.selectedAction()}"/>
+        </h:form>
+        <hr/><br/> 
+        
+        <!-- Use 'valueChangeListener' attribute with h:selectOneMenu -->    
+        <strong>Example 15:</strong> Use 'valueChangeListener' attribute with h:selectOneMenu<hr/>
+        <h:form>
+            <h:selectOneMenu value="#{playerBean.selectedPlayerObj}" onchange="this.form.submit();" converter="playerConverter" valueChangeListener="#{playerBean.selectedVCLAction}">                
+                <f:selectItems value="#{playerBean.playersList}" var="t" itemLabel="#{t.label}" itemValue="#{t}"/>                 
+            </h:selectOneMenu>
+        </h:form>
+        <hr/><br/> 
+        
+        <!-- AJAXify h:selectOneMenu with 'valueChangeListener' attribute -->    
+        <strong>Example 16:</strong> AJAXify h:selectOneMenu with 'valueChangeListener' attribute<hr/>
+        <h:form>
+            <h:selectOneMenu value="#{playerBean.selectedPlayerObj}" converter="playerConverter" valueChangeListener="#{playerBean.selectedVCLAction}">                
+                <f:selectItems value="#{playerBean.playersList}" var="t" itemLabel="#{t.label}" itemValue="#{t}"/>  
+                <f:ajax execute="@this" render="@form"/>
+            </h:selectOneMenu>
+        </h:form>
+    </h:body>
+</html>
+
