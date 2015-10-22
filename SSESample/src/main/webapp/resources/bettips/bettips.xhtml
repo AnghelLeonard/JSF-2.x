@@ -13,10 +13,11 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <h:outputScript library="default" name="js/sse.js" target="head" />
-        <div id="#{cc.clientId}"></div>
-        <script type="text/javascript">
-            connectToServer('#{cc.attrs.server}', #{cc.attrs.events}, '#{cc.clientId}');
-        </script>     
+        <div id="#{cc.clientId}">
+            <script type="text/javascript">
+                connectToServer('#{cc.attrs.server}', #{cc.attrs.events}, '#{cc.clientId}');
+            </script>     
+        </div>
     </cc:implementation>
 </html>
 
