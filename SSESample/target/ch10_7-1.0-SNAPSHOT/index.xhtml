@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:t="http://xmlns.jcp.org/jsf/composite/bettips">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <t:bettips server="http://localhost:8080/ch10_7/faces/BetServlet" events="['open','error','message']"/>       
+        <hr/>
+        <t:bettips server="http://localhost:8080/ch10_7/faces/BetServlet" events="['message']"/>
+        <hr/>
+        <t:bettips server="http://localhost:8080/ch10_7/faces/BetServlet" events="['open','error']"/>
+    </h:body>
+</html>
+
