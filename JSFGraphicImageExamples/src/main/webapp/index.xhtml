@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:o="http://omnifaces.org/ui">
+    <h:head>
+        <title>JSF graphicImage examples</title>
+        <style type="text/css">
+            .graphicImage-css{                
+                border:1px solid #000; /* Adding black border */
+                padding:10px; /* Adding padding */
+                background-color:#ccc; /* Adding a background color */
+            }
+        </style>
+    </h:head>
+    <h:body>     
+        <!-- Common/basic usage (I) - pointing an image via the 'name' attribute (no library) -->    
+        <strong>Example 1:</strong> Common/basic usage in JSF (I) - pointing an image via the 'name' attribute (no library)<hr/>
+        <h:graphicImage name="imgs/OmniFaces.png"/>
+        <hr/><br/>  
+
+        <!-- Common/basic usage (II) - pointing an image via the 'name' and 'library' attributes -->    
+        <strong>Example 2:</strong> Common/basic usage in JSF (II) - pointing an image via the 'name' and 'library' attributes<hr/>
+        <h:graphicImage library="default" name="imgs/OmniFaces.png"/>
+        <hr/><br/>
+
+        <!-- Pointing an image via the 'value' attribute -->    
+        <strong>Example 3:</strong> Pointing an image via the 'value' attribute<hr/>
+        <h:graphicImage value="#{resource['imgs/OmniFaces.png']}"/>
+        <hr/><br/>
+
+        <!-- Pointing an image via the 'url' attribute -->    
+        <strong>Example 4:</strong> Pointing an image via the 'url' attribute<hr/>
+        <h:graphicImage url="#{resource['imgs/OmniFaces.png']}"/>
+        <hr/><br/>       
+
+        <!-- Pointing an image located on the web -->    
+        <strong>Example 5:</strong> Pointing an image located on the web<hr/>        
+        <h:graphicImage value="https://pbs.twimg.com/profile_images/606750829622751232/agAQx5KB_400x400.png"/>
+        <h:graphicImage url="https://pbs.twimg.com/profile_images/606750829622751232/agAQx5KB_400x400.png"/>
+        <hr/><br/>
+
+        <!-- Setting the width and height of an image -->    
+        <strong>Example 6:</strong> Setting the width and height of an image<hr/>
+        <h:graphicImage name="imgs/OmniFaces.png" height="70" width="70"/>
+        <hr/><br/>
+
+        <!-- Styling images with inner CSS -->    
+        <strong>Example 7:</strong> Styling images with inner CSS<hr/>
+        <h:graphicImage name="imgs/OmniFaces.png" style="border:1px solid #000;padding:10px;"/>
+        <hr/><br/>
+
+        <!-- Styling images with CSS class -->    
+        <strong>Example 8:</strong> Styling images with CSS class<hr/>
+        <h:graphicImage name="imgs/OmniFaces.png" styleClass="graphicImage-css"/>
+        <hr/><br/>
+
+        <!-- Use a map image -->
+        <strong>Example 9:</strong> Use a map image<hr/>
+        <h:graphicImage name="imgs/OmniFaces.png" ismap="true" usemap="#omnifacesmap"/> 
+        <map name="omnifacesmap">
+            <area shape="rect" coords="0, 0, 37, 35" href="http://showcase.omnifaces.org/" title='OmniFaces Showcase'/> 
+            <area shape="rect" coords="38, 0, 76, 35" href="https://github.com/omnifaces/omnifaces" title='OmniFaces Source Code'/> 
+            <area shape="rect" coords="0, 35, 38, 72" href="http://omnifaces.org/docs/javadoc/current/" title='OmniFaces API Documentation'/>
+            <area shape="rect" coords="38, 35, 76, 72" href="http://omnifaces.org/docs/vdldoc/current/" title='OmniFaces VDL documentation'/> 
+        </map>
+        <hr/>
+
+        <!-- Render JSF resource image in data URI format via OmniFaces, o:graphicImage -->    
+        <strong>Example 10:</strong> Render JSF resource image in data URI format via OmniFaces, o:graphicImage<hr/>
+        <o:graphicImage name="imgs/OmniFaces.png" dataURI="true"/>
+        <hr/><br/>
+
+        <!-- Render InputStream (or byte[]) property as resource image via OmniFaces, o:graphicImage -->    
+        <strong>Example 11:</strong> Render InputStream (or byte[]) property as resource image via OmniFaces, o:graphicImage<hr/>
+        <o:graphicImage value="#{app.inputStreamImage}"/>
+        <hr/><br/>
+
+        <!-- Render InputStream (or byte[]) property with SVG content as resource image via OmniFaces, o:graphicImage -->    
+        <strong>Example 12:</strong> Render InputStream (or byte[]) property with SVG content as resource image via OmniFaces, o:graphicImage<hr/>
+        <o:graphicImage value="#{app.svgInputStreamImage}" type="svg"/>
+        <hr/><br/>       
+
+        <!-- Render InputStream (or byte[]) property with SVG content as fragment via OmniFaces, o:graphicImage -->    
+        <strong>Example 13:</strong> Render InputStream (or byte[]) property with SVG content as fragment via OmniFaces, o:graphicImage<hr/>
+        <o:graphicImage value="#{app.svgInputStreamImage}" type="svg" fragment="svgView(viewBox(0,50,50,50))"/>
+        <hr/><br/>
+
+        <!-- Render InputStream (or byte[]) property with SVG content as resource image data URI -->    
+        <strong>Example 14:</strong> Render InputStream (or byte[]) property with SVG content as resource image data URI<hr/>
+        <o:graphicImage value="#{app.svgInputStreamImage}" type="svg" dataURI="true"/>
+        <hr/><br/>                
+    </h:body>
+</html>
+
