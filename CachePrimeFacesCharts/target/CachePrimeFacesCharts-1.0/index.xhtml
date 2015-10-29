@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:p="http://primefaces.org/ui">    
+    <h:head>
+        <title>Cache PrimeFaces Charts</title>      
+    </h:head>
+    <h:body>    
+        <o:cache id="cacheId">       
+            <p:chart id="someChartId" type="line" model="#{chartView.lineModel}" style="height:300px;width:600px;"/>                    
+        </o:cache>
+        <h:form>            
+            Saved charts IDs:
+            <h:panelGrid columns="8">
+                <h:selectOneMenu value="#{chartView.selected}">
+                    <f:selectItem itemLabel="Select a chart ..." noSelectionOption="true"/>
+                    <f:selectItems value="#{chartView.keys}" var="t" itemLabel="#{t}" itemValue="#{t}"/>
+                </h:selectOneMenu>    
+                <h:commandButton value="Load Chart" action="#{chartView.loadChart()}" disabled="#{chartView.keys.size() eq 0}"/>
+                <h:commandButton value="Delete Chart" action="#{chartView.deleteChart()}" disabled="#{chartView.keys.size() eq 0}"/> |           
+                <h:commandButton action="#{chartView.redrawAction()}" value="Refresh"/>
+                <h:commandButton action="#{chartView.saveChart()}" value="Save"/> |
+                Loaded/Deleted: #{chartView.selected}
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
