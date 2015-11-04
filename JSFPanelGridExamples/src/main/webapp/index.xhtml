@@ -1,0 +1,681 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>JSF panelGrid examples</title>
+        <style type="text/css">
+            /* Example 4 */
+            .panelGrid-css, .panelGrid-css td {
+                border-collapse:collapse;
+                background-color:#eee;
+                border:1px solid #000;
+                padding:3px 5px;
+            }
+            .panelGrid-css th {
+                background-color:#ccc;
+            }
+            .panelGrid-css tfoot td {
+                background-color:#ccc;
+                text-align:right;
+                font-size:12px;
+            }
+
+            /* Example 7 and 17 */
+            .header {
+                background-color:#6cf;
+                color:#444;
+            }
+            .footer {
+                background-color:#9ff;
+                font-size:12px;
+                color:#444;
+            }
+
+            /* Example 17 */
+            .caption{
+                background-color: aqua;
+                font-style: inherit;
+                font-weight: bolder;
+            }
+
+            /* Example 8 and 9 */
+            .first {
+                background-color:#ffc;
+            }
+            .second {
+                background-color:#cfc;
+            }
+            .third {
+                background-color:#fcc;
+            }
+
+            /* Example 10 */
+            .custom {
+                background-color:#999;
+            }
+            .custom td {
+                background-color:#eee;
+                border:1px solid #000;     
+            }
+
+            /* Example 11 */
+            .td-size td {
+                border:1px solid #000;
+                width:150px;
+                height:100px;
+            }
+            .text-left {
+                text-align:left;
+            }
+            .text-center {
+                text-align:center;
+            }
+            .text-right {
+                text-align:right;
+            }
+            .text-vbottom {
+                vertical-align:bottom;
+            }
+            .text-vmiddle {
+                vertical-align:middle;
+            }
+            .text-vtop {
+                vertical-align:top;
+            }
+
+            /* Example 12 */
+            .td-size td {
+                border:1px solid #000;
+                width:150px;
+                height:100px;
+            }
+            .text-topleft {
+                text-align:left;
+                vertical-align:top;
+            }
+            .text-topcenter {
+                text-align:center;
+                vertical-align:top;
+            }
+            .text-topright {
+                text-align:right;
+                vertical-align:top;
+            }
+            .text-bottomleft {
+                text-align:left;
+                vertical-align:bottom;
+            }
+            .text-bottomcenter {
+                text-align:center;
+                vertical-align:bottom;
+            }
+            .text-bottomright {
+                text-align:right;
+                vertical-align:bottom;
+            }
+
+            /* Example 13 */
+            .td80 td {
+                border:1px solid #000;
+                width:80px;
+                height:80px;
+            }
+            .vertical-rl {
+                -ms-writing-mode:tb-rl;
+                -webkit-writing-mode:vertical-rl;
+                -moz-writing-mode:vertical-rl;
+                -ms-writing-mode:vertical-rl;
+                writing-mode:vertical-rl;
+            }
+            .vertical-lr {
+                -ms-writing-mode:tb-lr;
+                -webkit-writing-mode:vertical-lr;
+                -moz-writing-mode:vertical-lr;
+                -ms-writing-mode:vertical-lr;
+                writing-mode:vertical-lr;
+            }
+
+
+            /* Example 14 */
+            .centerHorizontally {
+                border:1px solid #000;
+                position:relative;
+
+                width:500px;
+                height:200px;
+
+                margin-left:-250px;
+                left:50%;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <!-- Basic/common usage (I) - populate a static table -->
+        <strong>Example 1:</strong> Basic/common usage (I) - populate a static table<hr/>
+        <h:panelGrid columns="6">
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Basic/common usage (II) - display a nice form with labels, inputs and error messages -->
+        <strong>Example 2:</strong> Basic/common usage (II) - display a nice form with labels, inputs and error messages<hr/>
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputLabel for="nameId" value="Name:"/>
+                <h:inputText id="nameId" required="true"/>
+                <h:message for="nameId" style="color:red;"/>
+                <h:outputLabel for="emailId" value="E-mail:"/>
+                <h:inputText id="emailId" required="true"/>
+                <h:message for="emailId"  style="color:red;"/>
+                <h:outputLabel for="countryId" value="Country:"/>
+                <h:selectOneMenu id="countryId" required="true">
+                    <f:selectItem itemLabel="Romania"/>
+                    <f:selectItem itemLabel="Spain"/>
+                    <f:selectItem itemLabel="Italy"/>
+                </h:selectOneMenu>   
+                <h:message for="countryId"  style="color:red;"/>
+                <h:commandButton value="Order"/>            
+            </h:panelGrid>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Render a table with header and footer -->
+        <strong>Example 3:</strong> Render a table with header and footer<hr/>
+        <h:form>
+            <h:panelGrid columns="3">
+                <f:facet name="header">
+                    Place your order below
+                </f:facet>
+                <h:outputLabel for="nameId" value="Name:"/>
+                <h:inputText id="nameId" required="true"/>
+                <h:message for="nameId" style="color:red;"/>
+                <h:outputLabel for="emailId" value="E-mail:"/>
+                <h:inputText id="emailId" required="true"/>
+                <h:message for="emailId"  style="color:red;"/>
+                <h:outputLabel for="countryId" value="Country:"/>
+                <h:selectOneMenu id="countryId" required="true">
+                    <f:selectItem itemLabel="Romania"/>
+                    <f:selectItem itemLabel="Spain"/>
+                    <f:selectItem itemLabel="Italy"/>
+                </h:selectOneMenu>   
+                <h:message for="countryId"  style="color:red;"/>
+                <h:commandButton value="Order"/>            
+                <f:facet name="footer">
+                    <h:outputText value="Last updated: October 17, 2015" style="font-size:10px;"/>
+                </f:facet>
+            </h:panelGrid>      
+        </h:form>
+        <hr/><br/>
+
+        <!-- Styling a table using CSS class -->
+        <strong>Example 4:</strong> Styling a table using CSS class<hr/>
+        <h:form>
+            <h:panelGrid columns="3" class="panelGrid-css">
+                <f:facet name="header">
+                    Place your order below
+                </f:facet>
+                <h:outputLabel for="nameId" value="Name:"/>
+                <h:inputText id="nameId" required="true"/>
+                <h:message for="nameId" style="color:red;"/>
+                <h:outputLabel for="emailId" value="E-mail:"/>
+                <h:inputText id="emailId" required="true"/>
+                <h:message for="emailId"  style="color:red;"/>
+                <h:outputLabel for="countryId" value="Country:"/>
+                <h:selectOneMenu id="countryId" required="true">
+                    <f:selectItem itemLabel="Romania"/>
+                    <f:selectItem itemLabel="Spain"/>
+                    <f:selectItem itemLabel="Italy"/>
+                </h:selectOneMenu>   
+                <h:message for="countryId"  style="color:red;"/>
+                <h:commandButton value="Order"/>            
+                <f:facet name="footer">
+                    <h:outputText value="Last updated: October 17, 2015" style="font-size:10px;"/>
+                </f:facet>
+            </h:panelGrid>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Dynamic table rows -->
+        <strong>Example 5:</strong>Dynamic table rows<hr/>
+        <h:panelGrid columns="6" class="panelGrid-css">
+            <f:facet name="header">
+                WTA Singles Rankings
+            </f:facet>
+
+            <c:forEach items="#{playerBean.players}" var="player">
+                <h:column>
+                    #{player.rank}
+                </h:column>
+                <h:column>
+                    #{player.name}
+                </h:column>
+                <h:column>
+                    #{player.country}
+                </h:column>
+                <h:column>
+                    #{player.dateOfBirth}
+                </h:column>
+                <h:column>
+                    #{player.points}
+                </h:column>
+                <h:column>
+                    #{player.tournaments}
+                </h:column>
+            </c:forEach>
+
+            <f:facet name="footer">
+                Last updated: #{playerBean.today.toLocaleString()}
+            </f:facet>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Nested panel grids -->
+        <strong>Example 6:</strong> Nested panel grids<hr/>
+        <h:form>
+            <h:panelGrid columns="3" class="panelGrid-css">
+                <f:facet name="header">
+                    Place your order below
+                </f:facet>
+                <h:outputLabel for="nameId" value="Name:"/>
+                <h:inputText id="nameId" required="true"/>
+                <h:message for="nameId" style="color:red;"/>
+                <h:outputLabel for="emailId" value="E-mail:"/>
+                <h:inputText id="emailId" required="true"/>
+                <h:message for="emailId"  style="color:red;"/>
+                <h:outputLabel for="countryId" value="Country:"/>
+                <h:selectOneMenu id="countryId" required="true">
+                    <f:selectItem itemLabel="Romania"/>
+                    <f:selectItem itemLabel="Spain"/>
+                    <f:selectItem itemLabel="Italy"/>
+                </h:selectOneMenu>   
+                <h:message for="countryId"  style="color:red;"/>
+                <h:panelGrid columns="4">
+                    <h:commandButton value="Order"/>            
+                    <h:commandButton value="Cancel"/>            
+                    <h:commandButton value="Clear"/>            
+                    <h:commandButton value="Back"/>            
+                </h:panelGrid>
+                <f:facet name="footer">
+                    <h:outputText value="Last updated: October 17, 2015" style="font-size:10px;"/>
+                </f:facet>
+            </h:panelGrid>
+        </h:form>
+        <hr/><br/>
+
+        <!-- Styling table header and footer using CSS classes -->
+        <strong>Example 7:</strong> Styling table header and footer using CSS classes<hr/>
+        <h:panelGrid columns="6" headerClass="header" footerClass="footer">
+            <f:facet name="header">
+                WTA Singles Rankings
+            </f:facet>
+
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+
+            <f:facet name="footer">
+                Last updated: October 17, 2015
+            </f:facet>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Individual row styles in a table -->
+        <strong>Example 8:</strong> Individual row styles in a table<hr/>
+        <h:panelGrid columns="6" rowClasses="first,second,third">
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+
+            <h:outputText value="4"/>
+            <h:outputText value="Garbine Muguruza"/>
+            <h:outputText value="Spain"/>
+            <h:outputText value="08 Oct 1993"/>
+            <h:outputText value="4690"/>
+            <h:outputText value="20"/>
+
+            <h:outputText value="5"/>
+            <h:outputText value="Petra Kvitova"/>
+            <h:outputText value="Czech Republic"/>
+            <h:outputText value="08 Mar 1990"/>
+            <h:outputText value="3860"/>
+            <h:outputText value="19"/>
+
+            <h:outputText value="6"/>
+            <h:outputText value="Agnieszka Radwanska"/>
+            <h:outputText value="Poland"/>
+            <h:outputText value="06 Mar 1989"/>
+            <h:outputText value="3515"/>
+            <h:outputText value="23"/>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Individual column styles in a table -->
+        <strong>Example 9:</strong> Individual column styles in a table<hr/>
+        <h:panelGrid columns="6" columnClasses="first,second,third">
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+
+            <h:outputText value="4"/>
+            <h:outputText value="Garbine Muguruza"/>
+            <h:outputText value="Spain"/>
+            <h:outputText value="08 Oct 1993"/>
+            <h:outputText value="4690"/>
+            <h:outputText value="20"/>
+
+            <h:outputText value="5"/>
+            <h:outputText value="Petra Kvitova"/>
+            <h:outputText value="Czech Republic"/>
+            <h:outputText value="08 Mar 1990"/>
+            <h:outputText value="3860"/>
+            <h:outputText value="19"/>
+
+            <h:outputText value="6"/>
+            <h:outputText value="Agnieszka Radwanska"/>
+            <h:outputText value="Poland"/>
+            <h:outputText value="06 Mar 1989"/>
+            <h:outputText value="3515"/>
+            <h:outputText value="23"/>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Adding cell spacing and padding to a table -->
+        <strong>Example 10:</strong> Adding cell spacing and padding to a table<hr/>
+        <h:panelGrid columns="6" cellspacing="30" cellpadding="15" class="custom">
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Different alignment styles in a table cell (I) -->
+        <strong>Example 11:</strong> Different alignment styles in a table cell (I)<hr/>
+        <h:panelGrid columns="6" class="td-size" columnClasses="text-left,text-center,text-right,
+                     text-vbottom,text-vmiddle,text-vtop">
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Different alignment styles in a table cell (II) -->
+        <strong>Example 12:</strong> Different alignment styles in a table cell (II)<hr/>
+        <h:panelGrid columns="6" class="td-size" columnClasses="text-topleft,text-topcenter,
+                     text-topright,text-bottomleft,text-bottomcenter,text-bottomright">
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Setting a vertical text-direction in cells -->
+        <strong>Example 13:</strong> Setting a vertical text-direction in cells<hr/>
+        <h:panelGrid columns="2" class="td80" columnClasses="vertical-rl,vertical-lr">
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="Williams, Serena"/>
+
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Halep, Simona"/>
+
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Sharapova, Maria"/>
+        </h:panelGrid>
+        <br/>
+        <p class="vertical-lr" style="height:100px">
+            For Chrome and Opera, 'writing-mode' vertical-rl and
+            vertical-lr is currently not supported inside table cells.
+        </p>
+        <br/><br/>
+        <p class="vertical-rl" style="height:100px">
+            For Chrome and Opera, 'writing-mode' vertical-rl and 
+            vertical-lr is currently not supported inside table cells.
+        </p>
+        <hr/><br/>
+
+        <!-- Center a table horizontally -->
+        <strong>Example 14:</strong> Center a table horizontally<hr/>
+        <h:panelGrid columns="6" class="centerHorizontally">
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Center a table horizontally and vertically -->
+        <strong>Example 15:</strong> Center a table horizontally and vertically<hr/> 
+        <h:link value="Center a table horizontally and vertically" outcome="demo"/>
+        <br/><br/>
+
+        <!-- Set table background and border -->
+        <strong>Example 16:</strong> Set table background and border<hr/>
+        <h:panelGrid columns="6" border="3" bgcolor="orange">
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+        </h:panelGrid>
+        <hr/><br/>
+
+        <!-- Set table caption -->
+        <strong>Example 16:</strong> Set table caption<hr/>
+        <h:panelGrid columns="6" border="1">
+            <f:facet name="caption">
+                WTA Singles Rankings
+            </f:facet>
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+        </h:panelGrid>        
+        <hr/><br/>
+
+        <!-- Styling table caption, header and footer with CSS classes -->
+        <strong>Example 17:</strong> Styling table caption, header and footer with CSS classes<hr/>
+        <h:panelGrid columns="6" border="1" headerClass="header" footerClass="footer" captionClass="caption">
+            <f:facet name="caption">
+                WTA Singles Rankings
+            </f:facet>
+            <f:facet name="header">
+                First six positions 
+            </f:facet>
+            <h:outputText value="1"/>
+            <h:outputText value="Williams, Serena"/>
+            <h:outputText value="United States"/>
+            <h:outputText value="26 Sep 1981"/>
+            <h:outputText value="11285"/>
+            <h:outputText value="15"/>
+
+            <h:outputText value="2"/>
+            <h:outputText value="Halep, Simona"/>
+            <h:outputText value="Romania"/>
+            <h:outputText value="27 Sep 1991"/>
+            <h:outputText value="6580"/>
+            <h:outputText value="18"/>
+
+            <h:outputText value="3"/>
+            <h:outputText value="Sharapova, Maria"/>
+            <h:outputText value="Russia"/>
+            <h:outputText value="19 Apr 1987"/>
+            <h:outputText value="4691"/>
+            <h:outputText value="17"/>
+            <f:facet name="footer">
+                Last updated: October 17, 2015
+            </f:facet>
+        </h:panelGrid>        
+        <hr/><br/>
+    </h:body>
+</html>
