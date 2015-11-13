@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title></title>
+    </h:head>   
+    <h:body>
+        Conversation scope (CDI):<br/>
+        Just generated:
+        <h:outputText value="#{playersBean.player}"/><br/>
+
+        List of generated numbers:
+        <h:dataTable var="t" value="#{playersBean.players}">
+            <h:column>
+                <h:outputText value="#{t}"/>
+            </h:column>
+        </h:dataTable>       
+        <h:form>
+            <h:commandButton value="Start Conversation" style="background-color: #00cc00;" actionListener="#{playersBean.startPlayerRnd()}" action="index.xhtml"/>
+            <h:commandButton value="Get Players In Same View" actionListener="#{playersBean.newPlayer()}"/>
+            <h:commandButton value="Get Players With Page Forward" actionListener="#{playersBean.newPlayer()}" action="index.xhtml"/>
+            <h:commandButton value="Get Players With Page Redirect" actionListener="#{playersBean.newPlayer()}" action="index.xhtml?faces-redirect=true;"/>
+            <h:commandButton value="Stop Conversation" style="background-color: #00cc00;" actionListener="#{playersBean.stopPlayerRnd()}" action="index.xhtml"/>
+        </h:form>
+    </h:body>
+</html>
+
