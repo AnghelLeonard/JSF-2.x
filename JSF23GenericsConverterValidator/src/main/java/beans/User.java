@@ -3,10 +3,6 @@ package beans;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author Leonard
- */
 public class User implements Serializable {
 
     private String name;
@@ -31,12 +27,7 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }       
-
-    @Override
-    public String toString() {
-        return name+"/"+email;
-    }      
+    }              
 
     @Override
     public int hashCode() {
