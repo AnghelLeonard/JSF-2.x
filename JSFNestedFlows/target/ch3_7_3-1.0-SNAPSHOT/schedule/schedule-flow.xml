@@ -1,0 +1,29 @@
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="
+        http://xmlns.jcp.org/xml/ns/javaee
+        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+       
+    <flow-definition id="schedule">
+        <view id="schedule">
+            <vdl-document>/schedule/schedule.xhtml</vdl-document>
+        </view>   
+        
+        <flow-return id="taskFlowReturnThanks">          
+            <from-outcome>/registration/thanks.xhtml</from-outcome>
+        </flow-return>
+    
+        <inbound-parameter>
+            <name>playernameparam</name>
+            <value>#{flowScope.name}</value>
+        </inbound-parameter>
+        <inbound-parameter>
+            <name>playersurnameparam</name>
+            <value>#{flowScope.surname}</value>
+        </inbound-parameter>                
+        <inbound-parameter>
+            <name>playerregistrationcode</name>
+            <value>#{scheduleBean.regcode}</value>
+        </inbound-parameter>                         
+    </flow-definition>   
+</faces-config>

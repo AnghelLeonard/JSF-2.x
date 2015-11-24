@@ -1,0 +1,36 @@
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="
+        http://xmlns.jcp.org/xml/ns/javaee
+        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <flow-definition id="registration">        
+        <view id="registration">
+            <vdl-document>/registration/registration.xhtml</vdl-document>
+        </view>
+        <flow-return id="taskFlowReturnIndex">
+            <from-outcome>/index</from-outcome>
+        </flow-return>
+        <flow-return id="taskFlowReturnDone">
+            <from-outcome>#{registrationBean.returnValue}</from-outcome>
+        </flow-return>       
+                             
+        <flow-call id="callSchedule">
+            <flow-reference>
+                <flow-id>schedule</flow-id>
+            </flow-reference>   
+            <outbound-parameter>
+                <name>playernameparam</name>
+                <value>#{registrationBean.playerName}</value>
+            </outbound-parameter>         
+            <outbound-parameter>
+                <name>playersurnameparam</name>
+                <value>#{registrationBean.playerSurname}</value>
+            </outbound-parameter> 
+            <outbound-parameter>
+                <name>playerregistrationcode</name>
+                <value>349CF0YO122</value>
+            </outbound-parameter> 
+        </flow-call>
+    </flow-definition>           
+</faces-config>
