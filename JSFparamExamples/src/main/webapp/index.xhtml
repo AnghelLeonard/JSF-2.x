@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui">
+    <h:head>
+        <title>JSF f:param examples</title>
+    </h:head>
+    <h:body>
+        <strong>Example 1:</strong> Using f:param + h:outputFormat <hr/>
+        <h:outputFormat value="Hello {0} &amp; {1} fans!">
+            <f:param value="OmniFaces"/>
+            <f:param value="JSF"/>
+        </h:outputFormat>
+        <hr/><br/>
+
+        <strong>Example 2:</strong> Using f:param + h:link <hr/>
+        <h:link value="Welcome page" outcome="welcome">
+            <f:param name="name" value="Rafael Nadal"/>
+        </h:link>
+        <hr/><br/>
+
+        <strong>Example 3:</strong> Using f:param + h:commandLink and f:param + h:commandButton <hr/>
+        <h:form>
+            <h:commandLink value="Send" action="#{myBean.saveAndParam()}">
+                <f:param name="countryCode" value="RO"/>
+                <f:param name="homepage" value="http://www.omnifaces-fans.org/"/>
+            </h:commandLink>
+        </h:form>
+        <br/>
+
+        <h:form>
+            <h:commandButton value="Send" action="#{myBean.saveAndParam()}">
+                <f:param name="countryCode" value="RO"/>
+                <f:param name="homepage" value="http://www.omnifaces-fans.org/"/>
+            </h:commandButton>
+        </h:form>
+        <hr/><br/>
+
+        <strong>Example 4:</strong> Using f:param + h:outputLink <hr/>
+        <h:outputLink value="#{myBean.article.url}">
+            <f:param name="p" value="#{myBean.article.id}"/>
+            OmniFaces 5.3 Released
+        </h:outputLink>
+        <hr/><br/>
+
+        <strong>Example 5:</strong> Styling individual value parameters with CSS using OmniFaces <hr/>
+        <h:outputFormat value="Hello {0} &amp; {1} fans!" escape="false">
+            <o:param>
+                <h:outputText value="OmniFaces" style="color:red"/>
+            </o:param>
+            <o:param>
+                <h:outputText value="JSF" style="color:red"/>
+            </o:param>
+        </h:outputFormat>
+    </h:body>
+</html>
