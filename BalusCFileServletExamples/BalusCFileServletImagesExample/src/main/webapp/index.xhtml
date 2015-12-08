@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>BalusC FileServlet Example (loading images)</title>        
+    </h:head>
+    <h:body>        
+        <h5>BalusC FileServlet Example (loading images)</h5>
+        <hr/>        
+        Load an image from <code>'D:\media'</code> folder named, <code>cartoon.png</code>
+        <hr/>  
+        <p:panelGrid style="text-align: center;">
+            <f:facet name="header">
+                <p:row>
+                    <p:column>(HTML <code>img</code> tag)</p:column>
+                    <p:column>JSF (<code>h:graphicImage</code>)</p:column>
+                    <p:column>PrimeFaces (<code>p:graphicImage</code>)</p:column>
+                </p:row>
+            </f:facet>
+            <p:row>
+                <p:column style="border-width: 3px; border-color: olive;">
+                    <img src="#{request.contextPath}/faces/media/cartoon.png"/>
+                </p:column>          
+                <p:column style="border-width: 3px; border-color: olive;">
+                    <h:graphicImage url="faces/media/cartoon.png"/>
+                    <!-- <h:graphicImage value="faces/media/cartoon.png"/> -->
+                </p:column>          
+                <p:column style="border-width: 3px; border-color: olive;">
+                    <p:graphicImage url="faces/media/cartoon.png"/>
+                    <!-- <p:graphicImage value="faces/media/cartoon.png"/> -->
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+    </h:body>
+</html>
+

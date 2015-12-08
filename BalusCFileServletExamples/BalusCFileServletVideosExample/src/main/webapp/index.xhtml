@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>BalusC FileServlet Example (loading videos)</title>        
+    </h:head>
+    <h:body>        
+        <h5>BalusC FileServlet Example (loading videos)</h5>
+        <hr/>        
+        Load a video from <code>'D:\media'</code> folder named, <code>movie.mp4</code>
+        <hr/>  
+        <p:panelGrid style="text-align: center;">
+            <f:facet name="header">
+                <p:row>
+                    <p:column>(HTML <code>img</code> tag)</p:column>                    
+                    <p:column>PrimeFaces (<code>p:media</code>)</p:column>
+                </p:row>
+            </f:facet>
+            <p:row>
+                <p:column style="border-width: 3px; border-color: olive;">                    
+                    <video width="400" controls="controls">
+                        <source src="#{request.contextPath}/faces/media/movie.mp4" type="video/mp4"/>     
+                        <source src="#{request.contextPath}/faces/media/movie.ogg" type="video/ogg"/>                       
+                        Your browser does not support HTML5 video.
+                    </video>
+                </p:column>          
+                <p:column style="border-width: 3px; border-color: olive;">
+                    <p:media value="faces/media/movie.mp4" width="400">                        
+                        <f:param name="autoplay" value="false" />     
+                    </p:media>
+                </p:column>                          
+            </p:row>
+        </p:panelGrid>
+    </h:body>
+</html>
+

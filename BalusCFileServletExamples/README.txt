@@ -1,0 +1,1 @@
+The "media" folder should be copied in "D:\media", or in your favorite place and adjust in code the path.
