@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ds="http://deltaspike.apache.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>DS @GroupedConversationScoped</title>      
+    </h:head>
+    <h:body> 
+        <ds:windowId/>         
+        <h:panelGrid columns="1" style="border: solid 2px; width:50%;text-align: center;">
+            <f:facet name="header">
+                Conversation Group ABCD
+            </f:facet>
+            <h:form> 
+                <h4>ConversationBeanA</h4>    
+                A: #{conversationBeanA.a}           
+                <h:commandButton value="Increase A" action="#{conversationBeanA.increaseA()}"/>
+                <h:commandButton value="Stopping A will stop group ABCD" action="#{conversationBeanA.finish()}" style="margin-left: 5px;"/>
+                <h4>ConversationBeanB</h4>            
+                B: #{conversationBeanB.b}            
+                <h:commandButton value="Increase B" action="#{conversationBeanB.increaseB()}"/>
+                <h:commandButton value="Stopping B will stop group ABCD" action="#{conversationBeanB.finish()}" style="margin-left: 5px;"/>
+                <hr/><strong>Conversation Subgroup CD</strong>
+                <h4>ConversationBeanC</h4>            
+                C: #{conversationBeanC.c}            
+                <h:commandButton value="Increase C" action="#{conversationBeanC.increaseC()}"/> 
+                <h:commandButton value="Stopping C will stop group ABCD" action="#{conversationBeanC.finish()}" style="margin-left: 5px;"/>                
+                <h4>ConversationBeanD</h4>            
+                D: #{conversationBeanD.d}            
+                <h:commandButton value="Increase D" action="#{conversationBeanD.increaseD()}"/> 
+                <h:commandButton value="Stopping D will stop group ABCD" action="#{conversationBeanD.finish()}" style="margin-left: 5px;"/>                                    
+                <hr/>
+                <h:commandButton value="Close ABCD group (including CD subgroup)" action="#{closeABCDGroupBean.finish()}" style="margin-left: 5px;"/>                                    
+                <h:commandButton value="Close only CD subgroup" action="#{closeCDImplicitSubgroupBean.finish()}" style="margin-left: 5px; background-color: orchid;"/>                                    
+        </h:form>  
+        </h:panelGrid>                                          
+        <h:form>
+            <h:panelGrid columns="2" id="closeId" style="border: solid 1px; width:50%; text-align: center;">
+                <h:commandButton value="CLOSE ALL CONVERSATIONS" action="#{closeAllConversationsBean.finish()}" style="background-color: black; color: orange"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
