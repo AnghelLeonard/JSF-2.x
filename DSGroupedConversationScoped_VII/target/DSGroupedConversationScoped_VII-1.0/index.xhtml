@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ds="http://deltaspike.apache.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>DS @GroupedConversationScoped</title>      
+    </h:head>
+    <h:body> 
+        <ds:windowId/> 
+        <h:panelGrid columns="2" style="border: solid 2px; width:100%; text-align: center;">
+            <h:panelGrid columns="1" style="border: solid 2px; width:100%;">
+                <f:facet name="header">
+                    Conversation Group AB
+                </f:facet>
+                <h:form> 
+                    <h4>ConversationBeanA</h4>    
+                    A: #{conversationBeanA.a}   
+                    <h:panelGrid columns="2" cellspacing="5" style="width:100%;">
+                        <h:commandButton value="Increase A" action="#{conversationBeanA.increaseA()}"/>   
+                        <h:commandButton value="Increase A With C" action="#{conversationBeanA.increaseAWithC()}" style="background-color: yellow;"/>
+                    </h:panelGrid>
+                    <hr/>
+                    <h4>ConversationBeanB</h4>            
+                    B: #{conversationBeanB.b}   
+                    <h:panelGrid columns="2" cellspacing="5" style="width:100%;">
+                        <h:commandButton value="Increase B" action="#{conversationBeanB.increaseB()}"/>                            
+                        <h:commandButton value="Increase B With D" action="#{conversationBeanB.increaseBWithD()}" style="background-color: yellow;"/>
+                    </h:panelGrid>
+                    <hr/>
+                    <h:panelGrid columns="2" cellspacing="5" style="width:100%;">
+                        <h:commandButton value="Stop conversation group from A" action="#{conversationBeanA.finish()}"/>
+                        <h:commandButton value="Stop conversation group from B" action="#{conversationBeanB.finish()}"/>                                                                   
+                    </h:panelGrid>
+                    <h:commandButton value="Stop conversation group AB from outside AB" action="#{outsideBeanAB.finish()}" style="background-color: greenyellow;"/>
+                </h:form>  
+            </h:panelGrid>
+            <h:panelGrid columns="1" style="border: solid 2px; width:100%;">
+                <f:facet name="header">
+                    Conversation Group CD
+                </f:facet>                
+                <h:form> 
+                    <h4>ConversationBeanC</h4>    
+                    C: #{conversationBeanC.c}  
+                    <h:panelGrid columns="2" cellspacing="5" style="width:100%;">
+                        <h:commandButton value="Increase C" action="#{conversationBeanC.increaseC()}"/>                          
+                        <h:commandButton value="Increase C With A" action="#{conversationBeanC.increaseCWithA()}" style="background-color: yellow;"/>
+                    </h:panelGrid>
+                    <hr/>
+                    <h4>ConversationBeanD</h4>            
+                    D: #{conversationBeanD.d}            
+                    <h:panelGrid columns="2" cellspacing="5" style="width:100%;">
+                        <h:commandButton value="Increase D" action="#{conversationBeanD.increaseD()}"/>                            
+                        <h:commandButton value="Increase D With B" action="#{conversationBeanD.increaseDWithB()}" style="background-color: yellow;"/>                    
+                    </h:panelGrid>
+                    <hr/>
+                    <h:panelGrid columns="2" cellspacing="5" style="width:100%;">
+                        <h:commandButton value="Stop conversation group from C" action="#{conversationBeanC.finish()}"/>
+                        <h:commandButton value="Stop conversation group from D" action="#{conversationBeanD.finish()}"/>                                                                        
+                    </h:panelGrid>
+                    <h:commandButton value="Stop conversation group CD from outside CD" action="#{outsideBeanCD.finish()}" style="background-color: greenyellow;"/>
+                </h:form>  
+            </h:panelGrid>                        
+        </h:panelGrid>
+        <h:form>
+            <h:panelGrid columns="1" style="border: solid 1px; width:100%; text-align: center;">
+                <h:commandButton value="CLOSE ALL CONVERSATIONS" action="#{closeAllConversationsBean.finish()}" style="background-color: black; color: orange"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
