@@ -1,0 +1,9 @@
+beans\ConversationBeanC.class
+beans\CloseAllConversationsBean.class
+beans\ConversationABCDGroup.class
+beans\CloseCDSubgroupBean.class
+beans\ConversationBeanA.class
+beans\ConversationBeanD.class
+beans\ConversationBeanB.class
+beans\ConversationCDSubgroup.class
+beans\CloseABCDGroupBean.class
