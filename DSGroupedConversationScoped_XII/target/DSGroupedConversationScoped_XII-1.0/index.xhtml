@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"        
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ds="http://deltaspike.apache.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>DS @GroupedConversationScoped</title>      
+    </h:head>
+    <h:body> 
+        <ds:windowId/> 
+        <h:form> 
+            <h:panelGrid columns="1" style="border: solid 2px; width:50%;text-align: center;">
+                <f:facet name="header">
+                    ConversationBeanA injected in ConversationBeanB and vice versa
+                </f:facet> 
+                <h4>ConversationBeanA (stop it by pressing 'Stop A' button)</h4>    
+                A: #{conversationBeanA.a}  
+                <h:panelGrid columns="3" cellspacing="5" style="width:100%;">
+                    <h:commandButton value="Increase A" action="#{conversationBeanA.increaseA()}"/>                                              
+                    <h:commandButton value="Stop A" action="#{conversationBeanA.finish()}"/>
+                    <h:commandButton value="Increase A with B" action="#{conversationBeanA.increaseAWithB()}"/>
+                </h:panelGrid>
+                <hr/>
+                <h4>ConversationBeanB (stop it by pressing 'Stop B' button)</h4>    
+                B: #{conversationBeanB.b}  
+                <h:panelGrid columns="3" cellspacing="5" style="width:100%;">
+                    <h:commandButton value="Increase B" action="#{conversationBeanB.increaseB()}"/>                                              
+                    <h:commandButton value="Stop B" action="#{conversationBeanB.finish()}"/>
+                    <h:commandButton value="Increase B with A" action="#{conversationBeanB.increaseBWithA()}"/>
+                </h:panelGrid>
+            </h:panelGrid>
+        </h:form>                                                
+    </h:body>
+</html>
+
