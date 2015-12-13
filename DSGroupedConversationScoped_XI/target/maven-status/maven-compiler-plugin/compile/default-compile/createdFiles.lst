@@ -1,0 +1,5 @@
+beans\ConversationBeanA.class
+beans\OutsideBeanAB.class
+beans\ConversationBeanB.class
+beans\BeanC.class
+beans\ConversationABInterface.class
