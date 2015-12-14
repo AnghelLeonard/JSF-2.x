@@ -1,0 +1,5 @@
+beans\CustomScope.class
+beans\CustomScopeResolver.class
+beans\CustomScopeNavigationHandler.class
+beans\SponsoredLinksBean.class
+beans\FreeLinksBean.class

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+        <style type="text/css">
+            td,th { vertical-align:top; }
+            form { padding: 10px; }
+        </style>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="2" id="panelGrid">                       
+            <h:form style="width:700px;">
+                Add sponsored link: <h:inputText value="#{sponsoredLinksBean.link}"/>
+                <h:commandButton value="Add" actionListener="#{sponsoredLinksBean.addSponsoredLink()}"/>
+                <br/>Sponsored Links<br/>
+                <h:dataTable var="t" value="#{sponsoredLinksBean.sponsoredLinks}">
+                    <h:column>
+                        <h:outputLink value="#{t}">
+                            #{t}
+                        </h:outputLink>
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="Remove" actionListener="#{sponsoredLinksBean.removeSponsoredLink(t)}"/>
+                    </h:column>
+                </h:dataTable>               
+            </h:form>
+            <h:form>
+                <h:commandButton value="Back" action="index"/>
+            </h:form>
+        </h:panelGrid>
+    </h:body>
+</html>
+
+
