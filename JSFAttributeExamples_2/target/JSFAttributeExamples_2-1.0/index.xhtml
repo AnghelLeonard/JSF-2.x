@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>JSF f:attribute examples</title>
+    </h:head>
+    <h:body>
+        <h4>Select your next opponent:</h4>
+        <h:form id="racquetForm">
+            <h:messages/>
+            <h:selectOneMenu validator="gameValidator">
+                <f:selectItem itemValue="Rafael Nadal" itemLabel="Rafael Nafal"/>                                    
+                <f:selectItem itemValue="Roger Federer" itemLabel="Roger Federer"/>                                   
+                <f:selectItem itemValue="Novak Djokovic" itemLabel="Novak Djokovic"/>                    
+                <f:attribute name="msgAttrRafaelNadal" value="'King of clay' cannot be selected for this game ..."/>            
+                <f:attribute name="msgAttrRogerFederer" value="'The Maestro' cannot be selected for this game ..."/>
+                <f:attribute name="msgAttrNovakDjokovic" value="'Nole' cannot be selected for this game ..."/>
+            </h:selectOneMenu>
+            <h:commandButton value="Select"/>
+        </h:form>  
+    </h:body>
+</html>
