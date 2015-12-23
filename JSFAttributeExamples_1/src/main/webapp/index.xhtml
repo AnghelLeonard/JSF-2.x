@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>JSF f:attribute examples</title>
+    </h:head>
+    <h:body>
+        <!-- Assigning supported attributes (e.g. 'value' and 'style') to a JSF component (e.g. <h:outputText/>) (attributes values are hard coded)-->
+        <strong>Example 1:</strong>Assigning supported attributes (e.g. <code>value</code> and <code>style</code>) to a JSF component (e.g. <code>&lt;h:outputText/&gt;</code>) (attributes values are hard coded)<hr/>
+        <h:outputText>
+            <f:attribute name="value" value="Hello world!"/>
+            <f:attribute name="style" value="color:blue"/>
+        </h:outputText>
+        <hr/><br/>
+
+        <!-- Assigning supported attributes (e.g. 'value' and 'style') to a JSF component (e.g. <h:outputText/>) (attributes values are served from a properties file)-->
+        <strong>Example 2:</strong>Assigning supported attributes (e.g. <code>value</code> and <code>style</code>) to a JSF component (e.g. <code>&lt;h:outputText/&gt;</code>) (attributes values are served from a properties file)<hr/>
+        <f:loadBundle basename="messages" var="msg"/>
+        <h:outputText>
+            <f:attribute name="value" value="#{msg['HELLO']}"/>
+            <f:attribute name="style" value="#{msg['STYLE']}"/>
+        </h:outputText>
+        <hr/><br/>
+
+        <!-- Assigning supported attributes (e.g. 'value' and 'style') to a JSF component (e.g. <h:outputText/>) (attributes values are served by a managed bean)-->
+        <strong>Example 3:</strong>Assigning supported attributes (e.g. <code>value</code> and <code>style</code>) to a JSF component (e.g. <code>&lt;h:outputText/&gt;</code>) (attributes values are served by a managed bean)<hr/>
+        <h:outputText>
+            <f:attribute name="value" value="#{myBean.hello}"/>
+            <f:attribute name="style" value="#{myBean.style}"/>
+        </h:outputText>        
+        <hr/><br/>       
+    </h:body>
+</html>
