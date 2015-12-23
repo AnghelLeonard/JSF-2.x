@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>JSF f:attribute examples</title>
+    </h:head>
+    <h:body>
+        <h4>Use 'f:attribute' to validate multiple components</h4>
+        <h:form id="registerForm">                        
+            <h:panelGrid id="pgId" columns="3">
+                <h:outputLabel for="nameId" value="Player name : " />
+                <h:inputText id="nameId" value="#{playersBean.name}" required="true" />
+                <h:message for="nameId" style="color: red;" />
+                <h:outputLabel for="surnameId" value="Player surname : " />
+                <h:inputText id="surnameId" value="#{playersBean.surname}" required="true" />
+                <h:message for="surnameId" style="color: red;" />
+                <h:outputLabel for="bankAccountId" value="Bank account : " />
+                <h:inputText id="bankAccountId" value="#{playersBean.bank}" required="true">
+                    <f:validator validatorId="bankValidator" />
+                    <f:attribute name="confirmBankAccountAttr" value="#{confirmBankAccount}" />
+                </h:inputText>
+                <h:message for="bankAccountId" style="color: red;" />
+                <h:outputLabel for="confirmBankAccountId" value="Confirm bank account : " />
+                <h:inputText id="confirmBankAccountId" value="#{playersBean.cbank}" binding="#{confirmBankAccount}" required="true" />
+                <h:message for="confirmBankAccountId" style="color: red;" />
+            </h:panelGrid>
+            <h:commandButton action="done" value="Send" />
+        </h:form>
+    </h:body>
+</html>
