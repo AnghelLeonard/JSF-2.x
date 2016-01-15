@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title></title>          
+    </h:head>
+    <h:body> 
+        <hr/>
+        <h5>Open new tab with <code>h:link</code>, <code>h:outputLink</code> and <code>h:commandLink</code> using <code>target</code> attribute</h5>               
+        <hr/>
+        <h:link value="Click me (h:link)!" outcome="result" target="_blank"/><br/>
+        <h:outputLink value="http://showcase.omnifaces.org/whatsnew" target="_blank">Click me (h:outputLink)!</h:outputLink>
+        <h:form>
+            <h:commandLink value="Click me (h:commandLink)!" action="result" target="_blank"/><br/>
+            <h:commandLink value="Click me (h:commandLink with redirect)!" action="result?faces-redirect=true" target="_blank"/><br/>
+            <h:commandLink value="Click me (h:commandLink with action method)!" action="#{resultBean.navigate()}" target="_blank"/><br/>
+            <h:commandLink value="Click me (h:commandLink with action method and redirect)!" action="#{resultBean.navigateWithRedirect()}" target="_blank"/>
+        </h:form>
+        <hr/>
+        <h5>Open new tab with <code>h:commandButton</code> using pass-through attributes</h5>               
+        <hr/>
+        <h:form>
+            <h:commandButton value="Click me (h:commandButton)!" action="result" pt:formtarget="_blank"/><br/>
+            <h:commandButton value="Click me (h:commandButton with redirect)!" action="result?faces-redirect=true" pt:formtarget="_blank"/><br/>
+            <h:commandButton value="Click me (h:commandButton with action method)!" action="#{resultBean.navigate()}" pt:formtarget="_blank"/><br/>
+            <h:commandButton value="Click me (h:commandButton with action method and redirect)!" action="#{resultBean.navigateWithRedirect()}" pt:formtarget="_blank"/>
+        </h:form>
+        <hr/>
+        <h5>Open new tab with <code>h:button</code> using <code>window.open();</code></h5>               
+        <h:button value="Click me (h:button)!" onclick="window.open('faces/result.xhtml');"/>
+        <hr/>
+    </h:body>
+</html>
