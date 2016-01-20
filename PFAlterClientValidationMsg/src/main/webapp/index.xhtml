@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"   
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Add input label to bean validation message</title>  
+        <style type="text/css">
+            .ui-widget {
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 12px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 400;
+                line-height: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>          
+        <h5>Add input label to bean validation message</h5>                                    
+        <hr/>
+        <h:form>
+            <p:messages/>
+            <p:growl/>
+            <p:panelGrid columns="2">
+                <p:outputLabel for="name" value="First Name"/>
+                <p:inputText id="name" label="name" value="#{dataBean.name}" />
+
+                <p:outputLabel for="surname" value="Last Name" />
+                <p:inputText id="surname" label="surname" value="#{dataBean.surname}" />
+
+                <p:commandButton value="Register" ajax="false" validateClient="true"/>                    
+            </p:panelGrid>            
+            <h:outputText value="Thank you !" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+        </h:form> 
+        <script type="text/javascript">
+            //<![CDATA[
+            PrimeFaces.locales.en_US.messages["javax.validation.constraints.Size.message"] = "The size of {0} must be between {1} and {2} characters";
+            PrimeFaces.validator.Size = {
+                MESSAGE_ID: "javax.validation.constraints.Size.message",
+                validate: function (d, f) {
+                    if (f !== null) {
+                        var e = d.val().length,
+                                c = d.data("p-minlength"),
+                                a = d.data("p-maxlength"),
+                                l = d.data("p-label");
+                        b = PrimeFaces.util.ValidationContext;
+                        if (e < c || e > a) {
+                            throw b.getMessageBV(d, this.MESSAGE_ID, d.data("p-size-msg"), l, c, a)
+                        }
+                    }
+                }
+            };
+            //]]>   
+        </script>
+    </h:body>
+</html>
