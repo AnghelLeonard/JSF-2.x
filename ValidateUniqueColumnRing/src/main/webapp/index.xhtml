@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
+    <h:head>
+        <title>Validating unique column</title>  
+        <style type="text/css">
+            .ui-widget {
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 18px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 400;
+                line-height: 20px;
+            }           
+            .ui-inputfield.ui-state-error, .ui-state-error .ui-inputfield {
+                background-color: #cc0000;
+                border:5px solid black;
+                color: white;
+            }
+        </style>
+    </h:head>
+    <h:body>          
+        <h5>Validating unique column</h5>                                    
+        <hr/>                
+        <h:form id="form">            
+            <p:panel>
+                <p:ring id="custom" value="#{barcelonaSquadBean.players}" var="t">
+                    <p:outputPanel style="text-align: center; height:90%;" layout="block">                   
+                        <p:inputText value="#{t.name}" required="true" style="width: 90%; height: inherit;">            
+                            <o:validateUniqueColumn message="Duplicate player not allowed!"/>
+                        </p:inputText>                     
+                    </p:outputPanel>                            
+                </p:ring>    
+            </p:panel>
+
+            <p:panel style="text-align: center; margin-top: 10px;">
+                <p:commandButton actionListener="#{barcelonaSquadBean.someAction()}" update="@form"
+                                 value="Subscribe Team"/>                                    
+                <p:messages id="msgs"/>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
