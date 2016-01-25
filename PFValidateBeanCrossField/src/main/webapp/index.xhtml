@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Controlling bean validation on a per-UICommand or UIInput component basis</title>  
+        <style type="text/css">
+            .ui-widget {
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 12px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 400;
+                line-height: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>    
+        <h5>Controlling bean validation on a per-UICommand or UIInput component basis</h5>               
+        <hr/> 
+        <h:form>   
+            <p:panelGrid columns="3">
+                <p:outputLabel for="nameId" value="Name"/>
+                <p:inputText id="nameId" value="#{contactBean.name}"/>                
+                <p:message for="nameId"/>            
+
+                <p:outputLabel for="emailId" value="E-mail"/>
+                <p:inputText id="emailId" value="#{contactBean.email}"/>                      
+                <p:message for="emailId"/>            
+
+                <p:commandButton value="Contact Member" action="#{contactBean.someAction()}"
+                                 update="@form" validateClient="true"/>                
+            </p:panelGrid>        
+            <p:messages/>
+        </h:form>   
+        <script type="text/javascript">
+            var data = [];
+            PrimeFaces.validator['ValidContact'] = {
+                MESSAGE_ID: 'org.primefaces.examples.validate.contact.message',
+                validate: function (element, value) {
+                    if (data.length == 0) {
+                        data.push(value);
+                    } else {
+                        if (!value.startsWith(data[0])) {
+                            var msgStr = element.data('p-contact-msg'),
+                            msg = msgStr ? {summary: msgStr, detail: msgStr} : vc.getMessage(this.MESSAGE_ID);
+                            //throw msg;
+                        }
+                    }
+                }
+            };
+        </script>
+    </h:body>
+</html>
