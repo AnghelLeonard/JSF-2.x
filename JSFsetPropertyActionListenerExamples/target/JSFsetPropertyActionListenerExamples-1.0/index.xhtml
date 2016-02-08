@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>JSF setPropertyActionListener examples</title>
+    </h:head>
+    <h:body>
+        <strong>Example 1:</strong> Set a static text to a managed bean property <hr/>
+        <h:form>
+            <h:commandButton value="Set name" action="#{playerBean.action()}">
+                <f:setPropertyActionListener value="Roger Federer" target="#{playerBean.playerName}"/>
+            </h:commandButton>
+        </h:form>
+        Player name: <h:outputText value="#{playerBean.playerName}"/>
+        <hr/><br/>
+
+        <strong>Example 2:</strong> Set a managed bean property value to another property value from the same bean <hr/>
+        <h:form>
+            <h:commandButton value="Set name">
+                <f:setPropertyActionListener value="#{playerBean.playerName}" target="#{playerBean.player.name}"/>
+            </h:commandButton>
+        </h:form>
+        Player name: <h:outputText value="#{playerBean.player.name}"/>
+        <hr/><br/>
+
+        <strong>Example 3:</strong> Set a property value from one managed bean to a property value in another managed bean <hr/>
+        <h:form>
+            <h:commandButton value="Set name">
+                <f:setPropertyActionListener value="#{playerBean.playerName}" target="#{tournamentBean.registeredPlayer.name}"/>
+            </h:commandButton>
+        </h:form>
+        Player name: <h:outputText value="#{tournamentBean.registeredPlayer.name}"/>
+        <hr/><br/>
+
+        <strong>Example 4:</strong> Remove an player from a list of players <hr/>
+        <h:form>
+            <ul style="list-style:none;">
+                <ui:repeat value="#{tournamentBean.players}" var="player">
+                    <li>
+                        <h:commandLink action="#{tournamentBean.removePlayer()}">
+                            <h:graphicImage name="imgs/del.png" title="Remove"/>
+                            <f:setPropertyActionListener value="#{player}" target="#{tournamentBean.selectedPlayer}"/>
+                        </h:commandLink>
+                        #{player.name}
+                    </li>
+                </ui:repeat>
+            </ul>
+        </h:form>
+        <hr/><br/>
+    </h:body>
+</html>
