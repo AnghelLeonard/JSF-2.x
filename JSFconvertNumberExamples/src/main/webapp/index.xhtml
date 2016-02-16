@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:of="http://omnifaces.org/functions">
+    <h:head>
+        <title>JSF convertNumber examples</title>
+    </h:head>
+    <h:body>
+        <f:view locale="en_US">
+            <!-- Use f:convertNumber to convert an input field -->
+            <strong>Example 1:</strong>Use <code>f:convertNumber</code> to convert an input field<hr/>
+            <h:form>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="Enter a number:" for="nr1Id" />
+                    <h:inputText id="nr1Id" value="#{numberBean.nr1}" label="Enter a number">
+                        <f:convertNumber />
+                    </h:inputText>
+                    <h:message for="nr1Id" style="color:red;"/>
+                </h:panelGrid>
+                <h:commandButton value="Send" action="#{numberBean.send1()}" />
+            </h:form>
+            <hr/><br/>
+
+            <!-- Use f:convertNumber to "preserve" only the integer part of the number -->
+            <strong>Example 2:</strong>Use <code>f:convertNumber</code> to "preserve" only the integer part of the number<hr/>
+            <h:form>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="Enter a number:" for="nr2Id" />
+                    <h:inputText id="nr2Id" value="#{numberBean.nr2}" label="Enter a number">
+                        <f:convertNumber integerOnly="true" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandButton value="Send" action="#{numberBean.send2()}" />
+            </h:form>
+            <hr/><br/>
+
+            <!-- Format a number as currency -->
+            <strong>Example 3:</strong>Format a number as currency<hr/>
+            Price (default locale): 
+            <h:outputText value="#{numberBean.price}">
+                <!-- uses the default locale specified for this page -->
+                <f:convertNumber type="currency" /> 
+            </h:outputText>
+            <br/>
+            Price (locale: ro_RO): 
+            <h:outputText value="#{numberBean.price}">
+                <f:convertNumber type="currency" locale="ro_RO" />
+            </h:outputText>
+            <br/>
+            Price (locale: de_DE): 
+            <h:outputText value="#{numberBean.price}">
+                <f:convertNumber type="currency" locale="de_DE" />
+            </h:outputText>
+            <hr/><br/>
+
+            <!-- Set a currency symbol when formatting a number as currency -->
+            <strong>Example 4:</strong>Set a currency symbol when formatting a number as currency<hr/>
+            Price (£): 
+            <h:outputText value="#{numberBean.price}">
+                <f:convertNumber type="currency" currencySymbol="£" />
+            </h:outputText>
+            <br/>
+            Price ($): 
+            <h:outputText value="#{numberBean.price}">
+                <f:convertNumber type="currency" currencySymbol="$" />
+            </h:outputText>
+            <br/>
+            Price (€): 
+            <h:outputText value="#{numberBean.price}">
+                <f:convertNumber type="currency" currencySymbol="€" />
+            </h:outputText>
+            <hr/><br/>
+
+            <!-- Format a number using a custom pattern -->
+            <strong>Example 5:</strong>Format a number using a custom pattern<hr/>
+            Price: <h:outputText value="#{numberBean.price}">
+                <f:convertNumber pattern="###,###.### €" />
+            </h:outputText>
+            <hr/><br/>
+
+            <!-- Format a number as percentage -->
+            <strong>Example 6:</strong>Format a number as percentage<hr/>
+            Discount: <h:outputText value="#{numberBean.discount}">
+                <f:convertNumber type="percent" />
+            </h:outputText>
+            <hr/><br/>
+
+            <!-- Set the minimum number of digits that will be formatted in the fractional portion -->
+            <strong>Example 7:</strong>Set the minimum number of digits that will be formatted in the fractional portion<hr/>
+            Price: <h:outputText value="#{numberBean.price}">
+                <f:convertNumber type="currency" minFractionDigits="1" />
+            </h:outputText>
+            <hr/><br/>
+
+            <!-- Remove grouping separators when formatting a number into currency -->
+            <strong>Example 8:</strong>Remove grouping separators when formatting a number into currency<hr/>
+            Price: <h:outputText value="#{numberBean.price}">
+                <f:convertNumber type="currency" groupingUsed="false" />
+            </h:outputText>
+            <hr/><br/>
+
+            <!-- Using OmniFaces formatBytes() function to format a value into B, KiB, MiB -->
+            <strong>Example 9:</strong>Using OmniFaces <code>formatBytes()</code> function to format a value into B, KiB, MiB<hr/>
+            Format 742 into byte: <h:outputText value="#{of:formatBytes(742)}" /><br/>
+            Format 4735 into kibibyte: <h:outputText value="#{of:formatBytes(4735)}" /><br/>
+            Format 6863463 into mebibyte: <h:outputText value="#{of:formatBytes(6863463)}" />
+            <hr/><br/>
+
+            <!-- Using OmniFaces formatPercent() function to format a given number as percentage -->
+            <strong>Example 10:</strong>Using OmniFaces <code>formatPercent()</code> function to format a given number as percentage<hr/>
+            <h:graphicImage name="default/images/AeroPro_drive.jpg"
+                            title="Discount: #{of:formatPercent(numberBean.discount)}"/>
+            <hr/><br/>
+
+            <!-- Using OmniFaces formatNumberDefault() function to format a given number in the locale-default pattern -->
+            <strong>Example 11:</strong>Using OmniFaces <code>formatNumberDefault()</code> function to format a given number in the locale-default pattern<hr/>
+            <h:graphicImage name="default/images/AeroPro_drive.jpg"
+                            title="Price: #{of:formatNumberDefault(numberBean.price)}"/>
+            <hr/><br/>
+
+            <!-- Using OmniFaces formatCurrency() function to format a given number as currency with the given symbol -->
+            <strong>Example 12:</strong>Using OmniFaces <code>formatCurrency()</code> function to format a given number as currency with the given symbol<hr/>
+            <h:graphicImage name="default/images/AeroPro_drive.jpg"
+                            title="Price: #{of:formatCurrency(169, '$')}"/>
+            <hr/><br/>
+
+            <!-- Using OmniFaces formatNumber() function to format a given number in the given pattern -->
+            <strong>Example 13:</strong>Using OmniFaces <code>formatNumber()</code> function to format a given number in the given pattern<hr/>
+            <h:graphicImage name="default/images/AeroPro_drive.jpg"
+                            title="Price: #{of:formatNumber(169, '#.0 €')}"/>
+            <hr/><br/>
+        </f:view>
+    </h:body>
+</html>
