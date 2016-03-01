@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Validate multiple</title>  
+        <style type="text/css">
+            .ui-widget {
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 12px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 400;
+                line-height: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>          
+        <h5>Validate multiple</h5>                                    
+        <hr/>
+        <h:form>
+            <p:messages id="msgs"/>
+            <p:pickList id="playersList" value="#{playerBean.model}" var="t" 
+                        itemLabel="#{t.rank}.#{t.name}" itemValue="#{t}">
+                <o:converter converterId="omnifaces.ListConverter" list="#{playerBean.players}" />
+            </p:pickList>
+
+            <p:selectManyCheckbox id="playersCheckbox" value="#{playerBean.selectedviaCheckbox}" converter="omnifaces.SelectItemsConverter"
+                                  layout="responsive" style="width: 435px; margin-top: 5px;" columns="3">
+                <f:selectItems value="#{playerBean.players}" var="t" itemLabel="#{t.rank}.#{t.name}" itemValue="#{t}" />
+            </p:selectManyCheckbox>
+
+            <p:commandButton value="Submit" action="#{playerBean.playersAction()}" update="msgs" style="margin-top:5px" />            
+
+            <o:validateMultiple id="validateMultiple" components="playersList playersCheckbox" validator="#{validatePlayers}" 
+                                message="The selected players via checkboxes must be contained by the selected player list." />
+        </h:form>        
+    </h:body>
+</html>
