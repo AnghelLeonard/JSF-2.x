@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">         
+    
+    <!-- FIRE A JSF GET REQUEST AND NAVIGATE TO THE VIEW ID COMPUTED FROM THE SPECIFIED OUTCOME -->
+    <!-- FIRE A JSF GET REQUEST. PROVIDE THE NAVIGATION OUTCOME VIA A SERVER-SIDE METHOD CALLED DURING COMPUTING THE VIEW ID (AT RENDERING TIME) -->
+    <!-- FIRE (SUBMIT) A POST REQUEST VIA FORWARD MECHANISM AND NAVIGATE TO THE VIEW ID COMPUTED FROM THE SPECIFIED OUTCOME -->
+    <navigation-rule>
+        <from-view-id>index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>done</from-outcome>
+            <to-view-id>/success.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>          
+    
+    <!-- FIRE (SUBMIT) A POST REQUEST VIA REDIRECT MECHANISM AND NAVIGATE TO THE VIEW ID COMPUTED FROM THE SPECIFIED OUTCOME -->
+    <navigation-rule>
+        <from-view-id>index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>doneredirect</from-outcome>
+            <to-view-id>/success.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>  
+    
+    <!-- FIRE (SUBMIT) A POST REQUEST VIA FORWARD MECHANISM. INVOKE AN ACTION METHOD AND NAVIGATE TO THE VIEW ID COMPUTED BASED ON THE OUTCOME RETURNED BY THIS METHOD -->
+    <navigation-rule>
+        <from-view-id>index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>doneFromTheActionWithOutcome</from-outcome>
+            <from-action>#{theBean.theActionWithOutcomeForSuccess()}</from-action>
+            <to-view-id>/success.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>doneFromTheActionWithOutcome</from-outcome>
+            <from-action>#{theBean.theActionWithOutcomeForFailure()}</from-action>
+            <to-view-id>/failure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- FIRE (SUBMIT) A POST REQUEST VIA REDIRECT MECHANISM. INVOKE AN ACTION METHOD AND NAVIGATE TO THE VIEW ID COMPUTED BASED ON THE OUTCOME RETURNED BY THIS METHOD -->
+    <navigation-rule>
+        <from-view-id>index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>doneFromTheActionWithRedirect</from-outcome>
+            <from-action>#{theBean.theActionWithRedirectForSuccess()}</from-action>
+            <to-view-id>/success.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>doneFromTheActionWithRedirect</from-outcome>
+            <from-action>#{theBean.theActionWithRedirectForFailure()}</from-action>
+            <to-view-id>/failure.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>        
+</faces-config>
