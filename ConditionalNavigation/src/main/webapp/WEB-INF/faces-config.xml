@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">         
+    
+    <!-- FIRE A JSF GET REQUEST AND NAVIGATE TO THE VIEW ID COMPUTED FROM THE SPECIFIED OUTCOME -->
+    <!-- FIRE (SUBMIT) A POST REQUEST VIA FORWARD MECHANISM AND NAVIGATE TO THE VIEW ID COMPUTED FROM THE SPECIFIED OUTCOME -->
+    <navigation-rule>
+        <from-view-id>index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>done</from-outcome>
+            <if>#{theBean.rnd gt 50}</if>
+            <to-view-id>/success.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>done</from-outcome>
+            <if>#{theBean.rnd le 50}</if>
+            <to-view-id>/failure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>      
+    
+    <!-- FIRE (SUBMIT) A POST REQUEST VIA REDIRECT MECHANISM AND NAVIGATE TO THE VIEW ID COMPUTED FROM THE SPECIFIED OUTCOME -->
+    <navigation-rule>
+        <from-view-id>index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>doneredirect</from-outcome>
+            <if>#{theBean.rnd gt 50}</if>
+            <to-view-id>/success.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>doneredirect</from-outcome>
+            <if>#{theBean.rnd le 50}</if>
+            <to-view-id>/failure.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

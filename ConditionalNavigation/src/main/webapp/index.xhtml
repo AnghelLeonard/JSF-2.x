@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Conditional navigation</title>          
+    </h:head>
+    <h:body>  
+        <h4>Conditional navigation</h4>
+        <hr/>
+        <h3>FIRE A JSF GET REQUEST AND NAVIGATE TO THE VIEW ID COMPUTED FROM THE SPECIFIED OUTCOME</h3>
+        <h4>JSF will interpret the <code>outcome</code> value of <code>&lt;h:link/&gt;/&lt;h:button/&gt;</code> as the targeted page name (<code>done</code> becomes <code>success.xhtml/failure.xhtml</code> via conditional navigation)</h4>
+        <code>&lt;h:link value="Click me! (h:link)" outcome="done"/&gt;</code><br/>
+        <h:link value="Click me! (h:link)" outcome="done"/><br/><br/>
+
+        <code>&lt;h:button value="Click me! (h:button)" outcome="done"/&gt;</code><br/>
+        <h:button value="Click me! (h:button)" outcome="done"/><br/>
+        <span style="color:red; font-size:9px;">Fires a JSF GET request</span>
+        <hr/>
+
+       <h3>FIRE A JSF GET REQUEST. PROVIDE THE NAVIGATION OUTCOME VIA A SERVER-SIDE METHOD CALLED DURING COMPUTING THE VIEW ID (AT RENDERING TIME)</h3>
+        <h4>JSF will interpret the <code>outcome</code> value of <code>&lt;h:link/&gt;/&lt;h:button/&gt;</code> as the targeted page name (<code>done</code> returned by <code>theActionWithDoneOutcome()</code> becomes <code>success.xhtml/failure.xhtml</code> via conditional navigation)</h4>        
+        <code>&lt;h:link value="Click me! (h:link)" outcome="#&zwnj;{theBean.theActionWithDoneOutcome()}"/&gt;</code><br/>
+        <h:link value="Click me! (h:link)" outcome="#{theBean.theActionWithDoneOutcome()}"/><br/>
+        <code>&lt;h:button value="Click me! (h:button)" outcome="#&zwnj;{theBean.theActionWithDoneOutcome()}"/&gt;</code><br/>
+        <h:button value="Click me! (h:button)" outcome="#{theBean.theActionWithDoneOutcome()}"/><br/>
+        <span style="color:red; font-size:9px;">Fires a JSF GET request</span>
+        <hr/> 
+        
+        <h3>FIRE (SUBMIT) A POST REQUEST VIA FORWARD MECHANISM AND NAVIGATE TO THE VIEW ID COMPUTED FROM THE SPECIFIED OUTCOME</h3>
+        <h4>JSF will interpret the <code>action</code> value of <code>&lt;h:commandLink/Button/&gt;</code> as the targeted page name (<code>done</code> becomes <code>success.xhtml/failure.xhtml</code> via conditional navigation)</h4>        
+        <h:form>
+            <code>&lt;h:commandLink value="Click Me! (h:commandLink)" action="done"/&gt;</code><br/>
+            <h:commandLink value="Click Me! (h:commandLink)" action="done"/><br/>       
+            <code>&lt;h:commandButton value="Click Me! (h:commandButton)" action="done"/&gt;</code><br/>        
+            <h:commandButton value="Click Me! (h:commandButton)" action="done"/>
+        </h:form>
+        <span style="color:red; font-size:9px;">Fires a JSF POST forward (submit form)</span>
+        <hr/>
+        
+        <h3>FIRE (SUBMIT) A POST REQUEST VIA REDIRECT MECHANISM AND NAVIGATE TO THE VIEW ID COMPUTED FROM THE SPECIFIED OUTCOME</h3>
+        <h4>The presence of <code>&lt;redirect/&gt;</code> in navigation case will instruct JSF to rely on POST-redirect-GET (PRG) navigation pattern</h4>
+        <h:form>     
+            <code>&lt;h:commandLink value="Click Me! (h:commandLink)" action="doneredirect"/&gt;</code><br/>
+            <h:commandLink value="Click Me! (h:commandLink)" action="doneredirect"/><br/>    
+            <code>&lt;h:commandButton value="Click Me! (h:commandButton)" action="doneredirect"/&gt;</code><br/>
+            <h:commandButton value="Click Me! (h:commandButton)" action="doneredirect"/>
+        </h:form>
+        <span style="color:red; font-size:9px;">Fires a JSF POST-redirect-GET (submit form)</span>
+        <hr/>
+        
+        <h3>FIRE (SUBMIT) A POST REQUEST VIA FORWARD MECHANISM. INVOKE AN ACTION METHOD AND NAVIGATE TO THE VIEW ID COMPUTED BASED ON THE OUTCOME RETURNED BY THIS METHOD</h3>         
+        <h4>The <code>action</code> can point to an action method that returns a <code>String</code>. This string is considered the outcome and it will be interpreted as the targeted page name.</h4>
+        <h:form>
+            <h5>theActionWithDoneOutcome() &#8594; success.xhtml/failure.xhtml</h5>
+            <code>&lt;h:commandLink value="Click Me! (h:commandLink)" action="#&zwnj;{theBean.theActionWithDoneOutcome()}"/&gt;</code><br/>
+            <h:commandLink value="Click Me! (h:commandLink)" action="#{theBean.theActionWithDoneOutcome()}"/><br/>
+            <code>&lt;h:commandButton value="Click Me! (h:commandButton)" action="#&zwnj;{theBean.theActionWithDoneOutcome()}"/&gt;</code><br/>
+            <h:commandButton value="Click Me! (h:commandButton)" action="#{theBean.theActionWithDoneOutcome()}"/>            
+        </h:form>
+        <span style="color:red; font-size:9px;">Fires a JSF POST forward (submit form)</span>
+        <hr/>
+        
+        <h3>FIRE (SUBMIT) A POST REQUEST VIA REDIRECT MECHANISM. INVOKE AN ACTION METHOD AND NAVIGATE TO THE VIEW ID COMPUTED BASED ON THE OUTCOME RETURNED BY THIS METHOD</h3>         
+        <h4>The <code>action</code> can point to an action method that returns a <code>String</code>. This string is considered the outcome and it will be interpreted as the targeted page name.The presence of <code>?faces-redirect=true</code> will instruct JSF to rely on POST-redirect-GET (PRG) navigation pattern.</h4>
+        <h:form>
+            <h5>theActionWithDoneOutcome() &#8594; success.xhtml/failure.xhtml</h5>
+            <code>&lt;h:commandLink value="Click Me! (h:commandLink)" action="#&zwnj;{theBean.theActionWithDoneOutcomeAndRedirect()}"/&gt;</code><br/>
+            <h:commandLink value="Click Me! (h:commandLink)" action="#{theBean.theActionWithDoneOutcomeAndRedirect()}"/><br/>
+            <code>&lt;h:commandButton value="Click Me! (h:commandButton)" action="#&zwnj;{theBean.theActionWithDoneOutcomeAndRedirect()}"/&gt;</code><br/>
+            <h:commandButton value="Click Me! (h:commandButton)" action="#{theBean.theActionWithDoneOutcomeAndRedirect()}"/>            
+        </h:form>
+        <span style="color:red; font-size:9px;">Fires a JSF POST forward (submit form)</span>
+        <hr/>
+    </h:body>
+</html>
