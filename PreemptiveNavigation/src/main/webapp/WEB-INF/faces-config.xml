@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+                         
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{playerBean.playerDone()}</from-action>
+            <from-outcome>done</from-outcome>
+            <to-view-id>/success.xhtml</to-view-id>
+            <redirect>                    
+                <view-param>
+                    <name>playerparam</name>
+                    <value>#{playerBean.player}</value>
+                </view-param>
+            </redirect>                
+        </navigation-case>
+    </navigation-rule>                         
+   
+</faces-config>
