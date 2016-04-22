@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"     
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>PrimeFaces and EHCache</title>  
+        <style type="text/css">
+            .ui-widget {
+                font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+                font-size: 9px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 400;
+                line-height: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>    
+        <h5>PrimeFaces and EHCache</h5>               
+        <hr/>        
+        <p:cache region="myCache">
+            <p:dataTable var="t" value="#{playersBean.data}">
+                <p:column headerText="Player">
+                    <h:panelGroup id="playerId">#{t.player}</h:panelGroup>
+                </p:column>
+
+                <p:column headerText="Age">
+                    <h:panelGroup id="ageId">#{t.age}</h:panelGroup>
+                </p:column>
+
+                <p:column headerText="Birthplace">
+                    <h:panelGroup id="birthplaceId">#{t.birthplace}</h:panelGroup>
+                </p:column>
+
+                <p:column headerText="Residence">
+                    <h:panelGroup id="residenceId">#{t.residence}</h:panelGroup>
+                </p:column>
+
+                <p:column headerText="Height">
+                    <h:panelGroup id="heightId">#{t.height} cm</h:panelGroup>
+                </p:column>
+
+                <p:column headerText="Weight">
+                    <h:panelGroup id="weightId">#{t.weight} kg</h:panelGroup>
+                </p:column>
+            </p:dataTable>
+        </p:cache>
+    </h:body>
+</html>
