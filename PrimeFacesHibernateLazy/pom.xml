@@ -23,14 +23,12 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.1.Final</version>
-            <scope>provided</scope>
+            <version>4.3.11.Final</version>           
         </dependency>
         <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>hibernate-jpamodelgen-4.3.1.Final</artifactId>
-            <version>SNAPSHOT</version>
-            <scope>provided</scope>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.11.Final</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
